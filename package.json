@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "compile-widget": "webpack --config ./widget/webpack.config.js --mode 'development'",
+    "widget-watch": "webpack --config ./widget/webpack.config.js --mode 'development' --watch"
   },
   "dependencies": {
     "babel-core": "^6.26.3",

@@ -24,3 +24,4 @@ Run `yarn widget-watch` to watch or `yarn compile-widget` to compile the Vue app
 - [x] Controllers and Models
 - [ ] Update Readme more
 - [ ] Document Controllers and Models
+- [x] Create contexts instead of separate model and controller folders

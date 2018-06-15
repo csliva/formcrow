@@ -1,4 +1,4 @@
-const Submission = require('../models/submission.model.js');
+const Submission = require('./model.js');
 
 //Need help??
 // https://www.callicoder.com/node-js-express-mongodb-restful-crud-api-tutorial/

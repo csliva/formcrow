@@ -44,3 +44,26 @@ exports.findAll = (req, res) => {
         });
     });
 };
+
+
+// Delete a note with the specified noteId in the request
+exports.delete = (req, res) => {
+    Submission.findByIdAndRemove(req.body.submissionId)
+    .then(submission => {
+        if(!submission) {
+            return res.status(404).send({
+                message: "Submission not found with id " + req.body.submissionId
+            });
+        }
+        res.send({message: "Submission deleted successfully!"});
+    }).catch(err => {
+        if(err.kind === 'ObjectId' || err.name === 'NotFound') {
+            return res.status(404).send({
+                message: "Submission not found with id " + req.body.submissionId
+            });
+        }
+        return res.status(500).send({
+            message: "Could not delete submissions with id " + req.body.submissionId
+        });
+    });
+};

@@ -1,0 +1,65 @@
+// sass --watch css
+// sass --watch css --style compressed
+
+@import "modules/_functions.sass"
+@import "modules/_mixins.sass"
+@import "modules/_colors.sass"
+
+//////////////////////////////////////////////
+// Global Vars
+//////////////////////////////////////////////
+
+// Typography
+$fs-base: 18px
+$line-height: 1.8
+$blh: round($fs-base * $line-height)
+
+$font-text: "'IBM Plex Sans', sans-serif"
+$font-title: "'IBM Plex Serif', serif"
+$title-trans: "none"
+$title-weight: 300
+
+// Font Scale Factor
+// 1.067: Minor Second
+// 1.125: Major Second
+// 1.200: Minor Third
+// 1.250: Major Third
+// 1.333: Perfect Fourth
+// 1.414: Augmented Fourth
+// 1.500: Perfect Fifth
+// 1.618: Golden Ratio
+
+$scale-factor: 1.333
+$xs-scale-factor: 1.125
+
+// media breakpoints (min)
+$media-min-xs: "screen and (min-width: 576px)"
+$media-min-sm: "screen and (min-width: 768px)"
+$media-min-md: "screen and (min-width: 992px)"
+$media-min-lg: "screen and (min-width: 1200px)"
+$media-min-xl: "screen and (min-width: 1400px)"
+// media breakpoints (max)
+$media-max-xs: "screen and (max-width: 575px)"
+$media-max-sm: "screen and (max-width: 767px)"
+$media-max-md: "screen and (max-width: 991px)"
+$media-max-lg: "screen and (max-width: 1199px)"
+$media-max-xl: "screen and (max-width: 1399px)"
+
+@import "modules/_reset.sass"
+
+//////////////////////////////////////////////
+// Components
+//////////////////////////////////////////////
+
+@import "components/_site.sass"
+
+//////////////////////////////////////////////
+// Plugins
+//////////////////////////////////////////////
+
+.fa
+  display: inline-block
+
+  //////////////////////////////////////////////
+  // Overrides
+  //////////////////////////////////////////////

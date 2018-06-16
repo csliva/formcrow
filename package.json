@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
-    "watch": "nodemon ./bin/www",
+    "start": "parallelshell \"node ./bin/www \" \"gulp styles\"",
+    "watch": "parallelshell \"nodemon ./bin/www \" \"gulp watch\"",
     "compile-widget": "webpack --config ./widget/webpack.config.js --mode 'development'",
     "widget-watch": "webpack --config ./widget/webpack.config.js --mode 'development' --watch"
   },
@@ -28,7 +28,10 @@
     "cross-env": "^4.0.0",
     "css-loader": "^0.26.2",
     "file-loader": "^0.11.1",
+    "gulp": "^3.9.1",
+    "gulp-sass": "^4.0.1",
     "nodemon": "^1.17.5",
+    "parallelshell": "^3.0.2",
     "rimraf": "^2.6.1",
     "uglify-js": "git://github.com/mishoo/UglifyJS2.git#harmony",
     "vue": "^2.2.6",

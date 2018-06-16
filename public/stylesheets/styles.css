@@ -1,0 +1,135 @@
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
+html,
+body {
+  width: 100%; }
+
+html {
+  font-size: 18px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+body {
+  font-family: 'IBM Plex Sans', sans-serif;
+  margin: 0;
+  font-size: 18px;
+  line-height: 32px;
+  color: #777; }
+
+h1, h2, h3, h4, h5 {
+  font-family: 'IBM Plex Serif', serif;
+  font-weight: 300;
+  text-transform: none;
+  font-style: inherit;
+  line-height: 32px;
+  margin-top: 0;
+  margin-bottom: 32px;
+  color: black; }
+  h1 small, h2 small, h3 small, h4 small, h5 small {
+    font-family: 'IBM Plex Sans', sans-serif;
+    display: block;
+    margin-top: 8px; }
+
+@media screen and (min-width: 768px) {
+  h1,
+  .fs-h1 {
+    font-size: 42.63467px;
+    line-height: 64px; } }
+
+@media screen and (max-width: 767px) {
+  h1,
+  .fs-h1 {
+    font-size: 25.62891px; } }
+
+@media screen and (min-width: 768px) {
+  h2,
+  .fs-h2 {
+    font-size: 31.984px;
+    line-height: 48px; } }
+
+@media screen and (max-width: 767px) {
+  h2,
+  .fs-h2 {
+    font-size: 22.78125px; } }
+
+@media screen and (min-width: 768px) {
+  h3,
+  .fs-h3 {
+    font-size: 23.994px;
+    line-height: 48px; } }
+
+@media screen and (max-width: 767px) {
+  h3,
+  .fs-h3 {
+    font-size: 20.25px; } }
+
+h4,
+.fs-h4,
+.fs-base {
+  font-size: 18px; }
+
+@media screen and (min-width: 768px) {
+  h5,
+  small,
+  button,
+  .fs-h5,
+  .fs-small {
+    font-size: 13.50338px; } }
+
+@media screen and (max-width: 767px) {
+  h5,
+  small,
+  button,
+  .fs-h5,
+  .fs-small {
+    font-size: 16px; } }
+
+p, ul, ol, pre, table, blockquote {
+  margin-top: 0;
+  margin-bottom: 32px; }
+
+ul ul, ol ol, ul ol, ol ul {
+  margin-top: 0;
+  margin-bottom: 0; }
+
+b, strong, em, small, code {
+  line-height: inherit; }
+
+a {
+  color: #F8FFAE; }
+
+figure {
+  margin: 0; }
+  figure img {
+    max-width: 100%; }
+
+.site {
+  position: relative;
+  min-height: 100vh;
+  background: #F0F5F9; }
+  .site__header {
+    display: block; }
+  .site__body {
+    display: block; }
+  .site__footer {
+    padding: 32px 32px 64px 32px;
+    color: #bbb; }
+  .site__section {
+    overflow: hidden;
+    padding: 32px; }
+  .site__textblock {
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 6px;
+    padding: 32px;
+    margin: 32px; }
+  .site h1, .site h2, .site h3, .site h4, .site h5 {
+    text-align: center; }
+
+.fa {
+  display: inline-block; }

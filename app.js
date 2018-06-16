@@ -7,10 +7,6 @@ var logger = require('morgan');
 //directly require the .env file (created for mLab MongoDB account)
 require('dotenv').config()
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var submissionsRouter = require('./routes/submissions');
-
 var app = express();
 
 // view engine setup
@@ -35,9 +31,18 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+//////////////////////////////////////////
+// ROUTING
+//////////////////////////////////////////
+
+var indexRouter = require('./contexts/home/routes.js');
+var submissionsRouter = require('./contexts/submissions/routes.js');
+
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
 app.use('/submissions', submissionsRouter);
+
+
+//////////////////////////////////////////
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

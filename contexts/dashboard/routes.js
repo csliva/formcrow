@@ -1,13 +1,15 @@
 var express = require('express');
 var router = express.Router();
+const controller = require('./controller.js');
 //const controller = require('./controller.js');
 
 /* Check to see if logged in */
 router.get('/', function(req, res, next) {
   if(req.session.userId){
-    console.log(req.session.userId)
-    res.send('Logged In');
+    // load in dashboard data
+    controller.load(req, res)
   } else {
+    //Not logged in
     return res.redirect('users/login');
   }
 });

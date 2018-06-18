@@ -101,7 +101,7 @@ b, strong, em, small, code {
   line-height: inherit; }
 
 a {
-  color: #F8FFAE; }
+  color: rgba(230, 212, 182, 0.75); }
 
 figure {
   margin: 0; }

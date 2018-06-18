@@ -27,7 +27,6 @@ Run `yarn widget-watch` to watch or `yarn compile-widget` to compile the Vue app
 - [x] Create contexts instead of separate model and controller folders
 - [ ] Masking or auto formatting on contact form in widget
 - [x] Write form post event
-- [ ] Return success or error instead of MongoDB object
-- [ ] User Context
-- [ ] Bcrypt password hashing
-- [ ] Check if mongodb sanitation is needed
+- [x] User Context
+- [x] Bcrypt password hashing
+- [ ] Sanitize by removing `' " \ ; { }` characters from any input

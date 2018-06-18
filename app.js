@@ -54,12 +54,14 @@ app.use(session({
 //////////////////////////////////////////
 
 var indexRouter = require('./contexts/home/routes.js');
-var submissionsRouter = require('./contexts/submissions/routes.js');
 var usersRouter = require('./contexts/users/routes.js');
+var queryRouter = require('./contexts/queries/routes.js');
+var leadRouter = require('./contexts/leads/routes.js');
 var dashboardRouter = require('./contexts/dashboard/routes.js');
 
 app.use('/', indexRouter);
-app.use('/submissions', submissionsRouter);
+app.use('/query', queryRouter);
+app.use('/lead', leadRouter);
 app.use('/users', usersRouter);
 app.use('/dashboard', dashboardRouter);
 

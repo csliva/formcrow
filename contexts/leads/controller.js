@@ -33,19 +33,6 @@ exports.create = (req, res) => {
     });
 };
 
-// Retrieve and return all submissions from the database.
-exports.findAll = (req, res) => {
-    Submission.find()
-    .then(submissions => {
-        res.send(submissions);
-    }).catch(err => {
-        res.status(500).send({
-            message: err.message || "Some error occurred while retrieving Submission."
-        });
-    });
-};
-
-
 // Delete a note with the specified noteId in the request
 exports.delete = (req, res) => {
     Submission.findByIdAndRemove(req.body.submissionId)

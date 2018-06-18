@@ -26,4 +26,9 @@ router.post('/auth', function(req, res, next) {
   controller.authenticate(req, res)
 });
 
+/* Authenticate */
+router.get('/logout', function(req, res, next) {
+  controller.logout(req, res)
+});
+
 module.exports = router;

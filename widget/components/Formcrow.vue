@@ -24,14 +24,11 @@
 </template>
 
 <script>
-window.onbeforeunload = function() {
-  console.log("leaving")
-  return;
-}
 export default {
   props: {
     query: { type: String, default: "How can we help you best?" },
-    prime_color: {type: String, default: "#ababab"}
+    prime_color: {type: String, default: "#ababab"},
+    uid: {type: String}
   },
   data: function(){
     return {
@@ -43,6 +40,7 @@ export default {
     }
   },
   created: function(){
+    //get IP Address
     let that = this;
     window.fetch('https://api.ipify.org', {
       method: 'get',
@@ -55,6 +53,13 @@ export default {
         // Error :(
         console.log(err)
       });
+      //If form has been started without submission, submit before closing the page
+      window.onbeforeunload = function() {
+        if(that.query_input){
+          that.submitFormCrow();
+        }
+        return;
+      }
   },
   methods: {
     submitQuery(){
@@ -62,13 +67,13 @@ export default {
     },
     submitFormCrow(){
       let that = this
-      fetch('http://localhost:3000/submissions', {
+      fetch('http://localhost:3000/lead', {
         method: 'post',
         headers: {
         'Accept': 'application/json, text/plain, */*',
         'Content-Type': 'application/json'
       },
-        body: JSON.stringify({submission: that.query_input, contact: that.contact_input})
+        body: JSON.stringify({submission: that.query_input, contact: that.contact_input, ip: that.ip})
       }).then(res=>res.json())
       .then(res => console.log(res));
     }

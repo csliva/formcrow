@@ -30,3 +30,6 @@ Run `yarn widget-watch` to watch or `yarn compile-widget` to compile the Vue app
 - [x] User Context
 - [x] Bcrypt password hashing
 - [ ] Sanitize by removing `' " \ ; { }` characters from any input
+- [ ] Tie leads and queries together
+- [ ] Fix auto-submit logic
+- [ ] Zapier integrations

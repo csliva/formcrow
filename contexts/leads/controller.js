@@ -1,4 +1,4 @@
-const Submission = require('./model.js');
+const Lead = require('./model.js');
 
 //Need help??
 // https://www.callicoder.com/node-js-express-mongodb-restful-crud-api-tutorial/
@@ -15,42 +15,21 @@ exports.create = (req, res) => {
             message: "Submission can not be empty"
         });
     }
-
     // Create a Submission
-      const submission = new Submission({
+      const lead = new Lead({
         submission: req.body.submission,
-        contact: req.body.contact
+        contact: req.body.contact,
+        ip: req.body.ip
       });
 
     // Save Submission in the database
-    submission.save()
+    lead.save()
     .then(data => {
         res.send(data);
     }).catch(err => {
+      console.log("5")
         res.status(500).send({
             message: err.message || "Some error occurred while creating the Submission."
-        });
-    });
-};
-
-// Delete a note with the specified noteId in the request
-exports.delete = (req, res) => {
-    Submission.findByIdAndRemove(req.body.submissionId)
-    .then(submission => {
-        if(!submission) {
-            return res.status(404).send({
-                message: "Submission not found with id " + req.body.submissionId
-            });
-        }
-        res.send({message: "Submission deleted successfully!"});
-    }).catch(err => {
-        if(err.kind === 'ObjectId' || err.name === 'NotFound') {
-            return res.status(404).send({
-                message: "Submission not found with id " + req.body.submissionId
-            });
-        }
-        return res.status(500).send({
-            message: "Could not delete submissions with id " + req.body.submissionId
         });
     });
 };

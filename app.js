@@ -7,6 +7,10 @@ var logger = require('morgan');
 //directly require the .env file (created for mLab MongoDB account)
 require('dotenv').config()
 
+//session storage
+var session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
+
 var app = express();
 
 // view engine setup
@@ -32,14 +36,32 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 //////////////////////////////////////////
+// SESSION STORAGE
+/////////////////////////////////////////
+//use sessions for tracking logins
+app.use(session({
+  secret: 'Caw caw',
+  resave: true,
+  saveUninitialized: false,
+  cookie: { maxAge: 60000 },
+  store: new MongoStore({
+    mongooseConnection: db
+  })
+}));
+
+//////////////////////////////////////////
 // ROUTING
 //////////////////////////////////////////
 
 var indexRouter = require('./contexts/home/routes.js');
 var submissionsRouter = require('./contexts/submissions/routes.js');
+var usersRouter = require('./contexts/users/routes.js');
+var dashboardRouter = require('./contexts/dashboard/routes.js');
 
 app.use('/', indexRouter);
 app.use('/submissions', submissionsRouter);
+app.use('/users', usersRouter);
+app.use('/dashboard', dashboardRouter);
 
 
 //////////////////////////////////////////

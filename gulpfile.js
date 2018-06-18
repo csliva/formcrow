@@ -1,6 +1,7 @@
 //gulpfile.js
 
 var gulp = require('gulp');
+var watch = require('gulp-watch')
 var sass = require('gulp-sass');
 
 //style paths
@@ -14,5 +15,5 @@ gulp.task('styles', function(){
 });
 
 gulp.task('watch',function() {
-    gulp.watch(sassFiles,['styles']);
+    return watch(sassFiles, ['styles']);
 });

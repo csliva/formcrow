@@ -22,6 +22,10 @@ module.exports = {
       {
         test: /\.js$/,
         use: 'babel-loader'
+      },
+      {
+          test: /\.s[a|c]ss$/,
+          loader: 'style!css!sass'
       }
     ]
   }

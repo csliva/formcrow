@@ -15,8 +15,8 @@
           :labels="{checked: 'Phone', unchecked: 'Email'}"
           :color="{checked: '#00FF00', unchecked: '#FF0000'}"
         />
-        <input type="text" />
-        <button type="button">Submit</button>
+        <input v-on:keyup.13="submitFormCrow" type="text" v-model="contact_input" />
+        <button v-on:click="submitFormCrow" type="button">Submit</button>
       </div>
     </div>
   </div>
@@ -37,7 +37,7 @@ export default {
     return {
       query_input: "",
       ip: "",
-      //false = email, true = phone
+      contact_input: "",
       contact_toggle: true,
       view_toggle: true
     }
@@ -60,38 +60,22 @@ export default {
     submitQuery(){
       this.view_toggle = !this.view_toggle
     },
+    submitFormCrow(){
+      let that = this
+      fetch('http://localhost:3000/submissions', {
+        method: 'post',
+        headers: {
+        'Accept': 'application/json, text/plain, */*',
+        'Content-Type': 'application/json'
+      },
+        body: JSON.stringify({submission: that.query_input, contact: that.contact_input})
+      }).then(res=>res.json())
+      .then(res => console.log(res));
+    }
   },
 }
 </script>
 
-<style scoped>
-  #formcrow a {
-    display: inline-block;
-    border: 1px solid #ddd;
-    padding: 10px 20px;
-    margin-right: 10px;
-    text-transform: uppercase;
-    color: #999;
-    text-decoration: none;
-  }
-  #formcrow a:hover {
-    color: #333;
-    border-color: #888;
-  }
-  .formcrow__window{
-    width: 500px;
-    display: block;
-    overflow: hidden;
-  }
-  .formcrow__slide{
-    width: 500px;
-    display: block;
-    overflow: hidden;
-    transform: translate(50vw, 0px);
-    transition: transform .5s ease-out;
-  }
-  .active{
-    transform: translate(0px, 0px);
-    transition: all .5s ease-out;
-  }
+<style lang="scss" scoped>
+   @import '../sass/main.sass'
 </style>

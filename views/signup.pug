@@ -1,0 +1,11 @@
+extends layout
+
+block content
+  form(action="/users/signup" method="POST")
+    label(for='email') Email:
+    input(type='text', placeholder='user@mail.com' name='email')
+
+    label(for='password') Password:
+    input(type='text', placeholder='pass' name='password')
+
+    button(type='submit') Signup

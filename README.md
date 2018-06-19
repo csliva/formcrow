@@ -42,4 +42,4 @@ Run `yarn widget-watch` to watch or `yarn compile-widget` to compile the Vue app
 - [ ] Site design documents on Figma
 - [ ] Tie leads and queries together
 - [ ] Click on a query and view all submissions (kyle)
-- [ ] Creating a new query should allow
+- [ ] Creating a new query should generate embed code

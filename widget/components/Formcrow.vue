@@ -1,13 +1,15 @@
 <template>
 
-  <div id="formcrow">
-    <div class="formcrow__window">
-      <div v-bind:class="{ active: view_toggle }" class="formcrow__slide">
+  <div id="formcrow" v-bind:style="{'--prime-color': prime_color}">
+    <div v-bind:class="{ 'formcrow__window': view_state == 1,
+        'formcrow__window--active': view_state == 2,
+        'formcrow__window--complete': view_state == 3 } ">
+      <div class="formcrow__slide">
         <label>{{query}}</label>
         <input v-on:keyup.13="submitQuery" type="text" v-model="query_input" />
         <button type="button" v-on:click="submitQuery">Next</button>
       </div>
-      <div v-bind:class="{ active: !view_toggle }" class="formcrow__slide">
+      <div class="formcrow__slide">
         <label>What's the best way to reach out?</label>
         <toggle-button
           v-model="contact_toggle"
@@ -18,6 +20,9 @@
         <input v-on:keyup.13="submitFormCrow" type="text" v-model="contact_input" />
         <button v-on:click="submitFormCrow" type="button">Submit</button>
       </div>
+      <div class="formcrow__slide">
+        <p>Thank you for your submission!</p>
+      </div>
     </div>
   </div>
 
@@ -27,7 +32,7 @@
 export default {
   props: {
     query: { type: String, default: "How can we help you best?" },
-    prime_color: {type: String, default: "#ababab"},
+    prime_color: {type: String, default: "#fafafa"},
     uid: {type: String}
   },
   data: function(){
@@ -36,7 +41,7 @@ export default {
       ip: "",
       contact_input: "",
       contact_toggle: true,
-      view_toggle: true
+      view_state: 1
     }
   },
   created: function(){
@@ -63,7 +68,7 @@ export default {
   },
   methods: {
     submitQuery(){
-      this.view_toggle = !this.view_toggle
+      this.view_state = this.view_state + 1
     },
     submitFormCrow(){
       let that = this
@@ -75,12 +80,16 @@ export default {
       },
         body: JSON.stringify({submission: that.query_input, contact: that.contact_input, ip: that.ip})
       }).then(res=>res.json())
-      .then(res => console.log(res));
+      .then(res => this.view_state = this.view_state + 1);
     }
   },
 }
 </script>
 
-<style lang="scss" scoped>
-   @import '../sass/main.sass'
+<style lang="css" scoped>
+  #formcrow { background-color: var(--prime-color); }
+  #formcrow button {
+    background-color: var(--prime-color);
+    filter: brightness(50%);
+  }
 </style>

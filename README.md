@@ -25,6 +25,8 @@ Run `yarn widget-watch` to watch or `yarn compile-widget` to compile the Vue app
 - [ ] Fix auto-submit logic
 - [ ] Theme color implementation
 - [ ] Widget needs form ID as a prop
+- [ ] Error codes
+- [ ] Determine if user color is light or dark
 
 
 ## Todo API

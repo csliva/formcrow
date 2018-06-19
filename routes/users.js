@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-const controller = require('./controller.js');
+const controller = require('../contexts/users/controller.js');
 
 /* POST submissions listing. */
 router.post('/', function(req, res, next) {
@@ -9,12 +9,16 @@ router.post('/', function(req, res, next) {
 
 /* Login -- sends data to /auth */
 router.get('/login', function(req, res, next) {
-  res.render('login');
+  if(!req.session.userId){
+    res.render('login');
+  } else { return res.redirect('/dashboard'); }
 });
 
 /* Sign up -- render form */
 router.get('/signup', function(req, res, next) {
-  res.render('signup');
+  if(!req.session.userId){
+    res.render('signup');
+  } else { return res.redirect('/dashboard'); }
 });
 /* Sign up -- post data */
 router.post('/signup', function(req, res, next) {
@@ -26,7 +30,7 @@ router.post('/auth', function(req, res, next) {
   controller.authenticate(req, res)
 });
 
-/* Authenticate */
+/* Log out */
 router.get('/logout', function(req, res, next) {
   controller.logout(req, res)
 });

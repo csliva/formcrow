@@ -43,7 +43,7 @@ app.use(session({
   secret: 'Caw caw',
   resave: true,
   saveUninitialized: false,
-  cookie: { maxAge: 60000 },
+  cookie: { maxAge: 30 * 24 * 60 * 60 * 1000 }, //30 day max age
   store: new MongoStore({
     mongooseConnection: db
   })
@@ -53,13 +53,13 @@ app.use(session({
 // ROUTING
 //////////////////////////////////////////
 
-var indexRouter = require('./contexts/home/routes.js');
-var usersRouter = require('./contexts/users/routes.js');
-var queryRouter = require('./contexts/queries/routes.js');
-var leadRouter = require('./contexts/leads/routes.js');
-var dashboardRouter = require('./contexts/dashboard/routes.js');
+var homeRouter = require('./routes/home.js');
+var usersRouter = require('./routes/users.js');
+var queryRouter = require('./routes/queries.js');
+var leadRouter = require('./routes/leads.js');
+var dashboardRouter = require('./routes/dashboard.js');
 
-app.use('/', indexRouter);
+app.use('/', homeRouter);
 app.use('/query', queryRouter);
 app.use('/lead', leadRouter);
 app.use('/users', usersRouter);

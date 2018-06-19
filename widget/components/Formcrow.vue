@@ -1,5 +1,4 @@
 <template>
-
   <div id="formcrow" v-bind:style="{'--prime-color': prime_color}">
     <div v-bind:class="{ 'formcrow__window': view_state == 1,
         'formcrow__window--active': view_state == 2,
@@ -18,6 +17,8 @@
           :color="{checked: '#00FF00', unchecked: '#FF0000'}"
         />
         <input v-on:keyup.13="submitFormCrow" type="text" v-model="contact_input" />
+        <span>{{contact_input | filter_phone }}</span>
+        <span>{{contact_input | filter_email }}</span>
         <button v-on:click="submitFormCrow" type="button">Submit</button>
       </div>
       <div class="formcrow__slide">
@@ -66,6 +67,16 @@ export default {
         return;
       }
   },
+  filters: {
+    filter_phone: function (phone) {
+      if (!phone) return '';
+      return (/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im).test(phone);
+    },
+    filter_email: function (email){
+      if(!email) return '';
+      return (/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/).test(email);
+    }
+  },
   methods: {
     submitQuery(){
       this.view_state = this.view_state + 1
@@ -90,6 +101,6 @@ export default {
   #formcrow { background-color: var(--prime-color); }
   #formcrow button {
     background-color: var(--prime-color);
-    filter: brightness(50%);
+    filter: contrast(175%) brightness(.5);
   }
 </style>

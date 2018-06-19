@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
-const controller = require('./controller.js');
-//const controller = require('./controller.js');
+const controller = require('../contexts/dashboard/controller.js');
 
 /* Check to see if logged in */
 router.get('/', function(req, res, next) {

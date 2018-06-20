@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <% include partials/head %>
+  </head>
+  <body class="app">
+    <header>
+      <% include partials/header %>
+    </header>
+
+    <main>
+      <form action="query" method="POST">
+        <label for="query"> Query:</label>
+        <input type="text" placeholder="What is your question?" name="query" />
+        <button type="submit">Create New Form</button>
+      </form>
+
+      <ul>
+        <% queries.forEach(function(entry) { %>
+              <li><%= entry.query %></li>
+          <% }); %>
+      </ul>
+    </main>
+
+    <footer>
+      <% include partials/footer %>
+    </footer>
+
+  </body>
+</html>

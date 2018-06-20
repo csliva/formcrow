@@ -91,14 +91,18 @@ export default {
       },
         body: JSON.stringify({submission: that.query_input, contact: that.contact_input, ip: that.ip})
       }).then(res=>res.json())
-      .then(res => this.view_state = this.view_state + 1);
+      .then(res => {
+        this.view_state = this.view_state + 1;
+        that.query_input = "";
+        that.contact_input = "";
+      });
     }
   },
 }
 </script>
 
 <style lang="css" scoped>
-  .formcrow { background-color: var(--prime-color); }
+.formcrow { /*background-color: var(--prime-color);*/ }
   .formcrow button {
     background-color: var(--prime-color);
     filter: contrast(175%) brightness(.5);

@@ -14,6 +14,12 @@ router.get('/login', function(req, res, next) {
   } else { return res.redirect('/dashboard'); }
 });
 
+/* Authenticate */
+router.post('/login', function(req, res, next) {
+  controller.authenticate(req, res)
+});
+
+
 /* Sign up -- render form */
 router.get('/signup', function(req, res, next) {
   if(!req.session.userId){
@@ -23,11 +29,6 @@ router.get('/signup', function(req, res, next) {
 /* Sign up -- post data */
 router.post('/signup', function(req, res, next) {
   controller.create(req, res)
-});
-
-/* Authenticate */
-router.post('/auth', function(req, res, next) {
-  controller.authenticate(req, res)
 });
 
 /* Log out */

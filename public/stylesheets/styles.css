@@ -142,7 +142,8 @@ figure {
   background: linear-gradient(to right, rgba(0, 29, 46, 0.3) 0%, rgba(0, 29, 46, 0.35) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$clr-a', endColorstr='$clr-b',GradientType=1 ); }
   .nav__logo {
-    grid-column-start: 2; }
+    grid-column-start: 2;
+    text-decoration: none; }
     .nav__logo img, .nav__logo h1 {
       height: 64px;
       padding: 5px;

@@ -6,6 +6,6 @@ exports.load = (req, res) => {
     exec(function (err, queries) {
       if (err) return handleError(err);
       //map out unrelated user information
-      return res.render('dashboard', { queries: queries });
+      return res.render('dashboard', { queries: queries, authed: true });
   });
 }

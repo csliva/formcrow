@@ -1,13 +1,14 @@
 <nav class="nav">
-  <div class="nav__logo">
-    <img src="images/FormCrowLogo.svg" />
+  <a class="nav__logo" href="/">
+    <img src="/images/FormCrowLogo.svg" />
     <h1>Form Crow</h1>
-  </div>
+  </a>
   <ul class="nav__list">
-    <li><a href="/">Home</a></li>
-    <li><a href="/dashboard">Dashboard</a></li>
+    <% if (authed) { %>
     <li><a href="/users/logout">Log out</a></li>
+    <% } else { %>
     <li><a href="/users/login">Login</a></li>
     <li><a href="/users/signup">Signup</a></li>
+    <% } %>
   </ul>
 </nav>

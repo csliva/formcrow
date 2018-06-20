@@ -16,10 +16,18 @@ The purpose of the widget folder is to generate a script which can be embedded a
 
 Run `yarn widget-watch` to watch or `yarn compile-widget` to compile the Vue app into a new custom component javascript file.
 
+##### Widget Customization
+The widget is customizable by passing in props. The main props will be:
+1. id="form-id-generated-at-creation"
+2. query="The question the form will ask"
+3. prime_color="#xxxxxx" //The base color that will be used to build the css design
+
+If further CSS customization is needed, the end user can use specificity to apply their own css properties. the id #formcrow has been left alone so any styles starting with the widget ID will overwrite regular widget styles. 
+
 
 ## Todo Widget
 
-- [x] Add SASS Compiling
+- [x] Add SASS Compiling -- Now removed
 - [ ] Masking or auto formatting on contact form
 - [x] Write form post event
 - [ ] Fix auto-submit logic

@@ -21,7 +21,6 @@ exports.create = (req, res) => {
       query: req.body.query,
       user: req.session.userId
     });
-
     // Save Submission in the database
     query.save()
     .then(data => {

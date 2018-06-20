@@ -1,5 +1,5 @@
 <template>
-  <div id="formcrow" v-bind:style="{'--prime-color': prime_color}">
+  <div id="formcrow" class="formcrow"  v-bind:style="{'--prime-color': prime_color}">
     <div v-bind:class="{ 'formcrow__window': view_state == 1,
         'formcrow__window--active': view_state == 2,
         'formcrow__window--complete': view_state == 3 } ">
@@ -98,8 +98,8 @@ export default {
 </script>
 
 <style lang="css" scoped>
-  #formcrow { background-color: var(--prime-color); }
-  #formcrow button {
+  .formcrow { background-color: var(--prime-color); }
+  .formcrow button {
     background-color: var(--prime-color);
     filter: contrast(175%) brightness(.5);
   }

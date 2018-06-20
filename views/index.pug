@@ -1,8 +1,12 @@
 extends layout
 
 block content
-  a(href='/users/login') Login
-  a(href='/users/signup') Signup
+  if auth
+    a(href='dashboard') Dashboard
+  else
+    a(href='/users/login') Login
+    a(href='/users/signup') Signup
+    p= auth
   h1= title
   p Welcome to #{title}
   | <form-crow query="What would help your business get more leads?" prime_color="#fafafa"/></form-crow>

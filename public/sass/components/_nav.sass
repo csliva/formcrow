@@ -1,0 +1,22 @@
+.nav
+  display: grid
+  grid-template-columns: 1fr 10fr 20fr 1fr
+  height: $blh*2
+  line-height: $blh*2
+  +gradient-bg-horiz(rgba($clr-main, .3), rgba($clr-main, .35))
+  &__logo
+    grid-column-start: 2
+    img, h1
+      height: $blh*2
+      padding: 5px
+      display: inline-block
+      vertical-align: top
+  &__list
+    grid-column-start: 3
+    text-align: right
+  li
+    display: inline-block
+    padding: 0 10px
+    font-family: $font-title
+    a
+      text-decoration: none

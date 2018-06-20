@@ -15,14 +15,14 @@ html {
   -moz-osx-font-smoothing: grayscale; }
 
 body {
-  font-family: 'Lora', serif;
+  font-family: Lora, serif;
   margin: 0;
   font-size: 18px;
   line-height: 32px;
   color: #2f2f2f; }
 
 h1, h2, h3, h4, h5 {
-  font-family: 'Roboto', san-serif;
+  font-family: Roboto, sans-serif;
   font-weight: 300;
   text-transform: none;
   font-style: inherit;
@@ -31,7 +31,7 @@ h1, h2, h3, h4, h5 {
   margin-bottom: 32px;
   color: black; }
   h1 small, h2 small, h3 small, h4 small, h5 small {
-    font-family: 'Lora', serif;
+    font-family: Lora, serif;
     display: block;
     margin-top: 8px; }
 
@@ -101,7 +101,7 @@ b, strong, em, small, code {
   line-height: inherit; }
 
 a {
-  color: #fbda93; }
+  color: #626d68; }
 
 figure {
   margin: 0; }
@@ -130,6 +130,33 @@ figure {
     margin: 32px; }
   .app h1, .app h2, .app h3, .app h4, .app h5 {
     text-align: center; }
+
+.nav {
+  display: grid;
+  grid-template-columns: 1fr 10fr 20fr 1fr;
+  height: 64px;
+  line-height: 64px;
+  background: rgba(0, 29, 46, 0.3);
+  background: -moz-linear-gradient(left, rgba(0, 29, 46, 0.3) 0%, rgba(0, 29, 46, 0.35) 100%);
+  background: -webkit-linear-gradient(left, rgba(0, 29, 46, 0.3) 0%, rgba(0, 29, 46, 0.35) 100%);
+  background: linear-gradient(to right, rgba(0, 29, 46, 0.3) 0%, rgba(0, 29, 46, 0.35) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$clr-a', endColorstr='$clr-b',GradientType=1 ); }
+  .nav__logo {
+    grid-column-start: 2; }
+    .nav__logo img, .nav__logo h1 {
+      height: 64px;
+      padding: 5px;
+      display: inline-block;
+      vertical-align: top; }
+  .nav__list {
+    grid-column-start: 3;
+    text-align: right; }
+  .nav li {
+    display: inline-block;
+    padding: 0 10px;
+    font-family: "Roboto", sans-serif; }
+    .nav li a {
+      text-decoration: none; }
 
 .fa {
   display: inline-block; }

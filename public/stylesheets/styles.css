@@ -101,7 +101,11 @@ b, strong, em, small, code {
   line-height: inherit; }
 
 a {
-  color: #626d68; }
+  color: #626d68;
+  transition: color .5s; }
+  a:hover {
+    color: #001D2E;
+    transition: color .5s; }
 
 figure {
   margin: 0; }
@@ -190,7 +194,14 @@ figure {
   .home__signup {
     padding: 24px 32px;
     background: black;
-    color: white; }
+    color: white;
+    transition: background .5s;
+    font-family: "Roboto", sans-serif;
+    text-decoration: none; }
+    .home__signup:hover {
+      background: #626d68;
+      transition: background .5s;
+      color: white; }
 
 .card {
   background: white;
@@ -233,6 +244,32 @@ figure {
   .card--paid {
     grid-row-start: 2;
     grid-column-start: 2; }
+
+.user-form {
+  width: 500px;
+  max-width: 100%;
+  background: white;
+  padding: 32px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); }
+  .user-form label {
+    width: 100%;
+    padding: 8px;
+    font-size: 18px;
+    font-family: "Roboto", sans-serif; }
+  .user-form input {
+    width: 100%;
+    padding: 8px;
+    font-size: 18px;
+    font-family: "Lora", serif; }
+  .user-form button {
+    color: white;
+    background: black;
+    border: none;
+    padding: 16px 32px;
+    margin: 16px 0px; }
 
 .fa {
   display: inline-block; }

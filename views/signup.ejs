@@ -1,11 +1,29 @@
-<% include partials/head %>
-<% include partials/header %>
-<form action="/users/signup" method="POST">
-  <label for="email">Email</label>
-  <input type="text" placeholder="user@mail.com" name="email" />
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <% include partials/head %>
+  </head>
+  <body class="app">
+    <header>
+      <% include partials/header %>
+    </header>
 
-  <label for="password">Password</label>
-  <input type="password" name="password" />
+    <main class="user-form">
+      <h2>Sign up</h2>
+      <form action="/users/signup" method="POST">
+        <label for="email">Email</label>
+        <input type="text" placeholder="user@mail.com" name="email" />
 
-  <button type="submit">Sign up</button>
-</form>
+        <label for="password">Password</label>
+        <input type="password" name="password" />
+
+        <button type="submit">Sign me up</button>
+      </form>
+    </main>
+
+    <footer>
+      <% include partials/footer %>
+    </footer>
+
+  </body>
+</html>

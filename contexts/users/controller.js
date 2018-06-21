@@ -44,9 +44,6 @@ exports.authenticate = (req, res) => {
     User.findOne({email: req.body.email})
     .then(user => {
         if(!user) {
-            return res.status(404).send({
-                message: "User not found with id " + req.body.email
-            });
             req.session.flash = {"type": "error", "message": "Sorry, We couldn't find a user with the email " + req.body.email}
             return res.redirect("/users/login");
         }

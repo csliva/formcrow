@@ -1,11 +1,30 @@
-<% include partials/head %>
-<% include partials/header %>
-<form action="/users/login" method="POST">
-  <label for="email">Email</label>
-  <input type="text" placeholder="user@mail.com" name="email" />
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <% include partials/head %>
+  </head>
+  <body class="app">
+    <header>
+      <% include partials/header %>
+    </header>
 
-  <label for="password">Password</label>
-  <input type="password" name="password" />
+    <main class="user-form">
+      <h2>Login</h2>
+      <form action="/users/login" method="POST">
+        <label for="email">Email</label>
+        <input type="text" placeholder="user@mail.com" name="email" />
 
-  <button type="submit">Login</button>
-</form>
+        <label for="password">Password</label>
+        <input type="password" name="password" />
+
+        <button type="submit">Login</button>
+      </form>
+      <a href="/users/forgot">Forgot Password?</a>
+    </main>
+
+    <footer>
+      <% include partials/footer %>
+    </footer>
+
+  </body>
+</html>

@@ -24,6 +24,7 @@
     "mongodb": "^3.0.10",
     "mongoose": "^5.1.5",
     "morgan": "~1.9.0",
+    "tinycolor2": "^1.4.1",
     "vue-js-toggle-button": "^1.2.3",
     "vue-loader": "14.2.2"
   },

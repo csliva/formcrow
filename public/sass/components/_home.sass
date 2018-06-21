@@ -1,0 +1,63 @@
+///////////////////////////
+// HOME (grid)
+///////////////////////////
+.home
+  display: grid
+  grid-template-columns: 1fr 10fr 20fr 1fr
+  grid-template-rows: 1fr auto
+  &__form
+    grid-row-start: 1
+    grid-column-start: 3
+    grid-column-end: span 2
+    margin-top: $blh
+    justify-self: center
+
+  &__signup
+    padding: $blh*.75 $blh
+    background: black
+    color: white
+
+///////////////////////////
+// CARD
+///////////////////////////
+.card
+  background: white
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)
+  margin-top: $blh
+  &__title
+    background: black
+    color: white
+    margin: 0
+  &__sticker
+    background: white
+    border: 3px solid $clr-bg
+    border-radius: 100%
+    transform: translate(-10%, -40%)
+    width: 100px
+    height: 100px
+    display: flex
+    align-items: center
+    justify-content: center
+    float: right
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)
+    font-family: $font-title
+    span
+      text-align: center
+  &__features
+    list-style: none
+    padding: $blh
+    li:before
+      content: '\00b7'
+      font-size: 100px
+      vertical-align: text-bottom
+  &__arrow
+    grid-row-start: 1
+    grid-column-start: 2
+    transform: translate(50%, 200px)
+    z-index: -1
+  &--free
+    grid-row-start: 1
+    grid-column-start: 2
+  &--paid
+    grid-row-start: 2
+    grid-column-start: 2

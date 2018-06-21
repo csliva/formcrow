@@ -46,10 +46,19 @@ app.use(session({
   resave: true,
   saveUninitialized: false,
   cookie: { maxAge: 30 * 24 * 60 * 60 * 1000 }, //30 day max age
+  secure: false,
   store: new MongoStore({
     mongooseConnection: db
   })
 }));
+
+//custom flash middleware
+app.use(function(req, res, next){
+    // if there's a flash message in the session request, make it available in the response, then delete it
+    res.locals.flash = req.session.flash;
+    delete req.session.flash;
+    next();
+});
 
 //////////////////////////////////////////
 // ROUTING

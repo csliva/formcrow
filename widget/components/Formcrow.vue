@@ -1,6 +1,6 @@
 <template>
   <div id="formcrow" class="formcrow"  v-bind:style="{'--prime-color': prime_color}">
-    <div v-bind:class="{ 'formcrow__window': view_state == 1,
+    <div v-bind:class="{ 'formcrow__window--start': view_state == 1,
         'formcrow__window--active': view_state == 2,
         'formcrow__window--complete': view_state == 3 } ">
       <div class="formcrow__slide">
@@ -104,7 +104,7 @@ export default {
 <style lang="css" scoped>
 .formcrow { /*background-color: var(--prime-color);*/ }
   .formcrow button {
-    background-color: var(--prime-color);
-    filter: contrast(175%) brightness(.5);
+    background-color: rgba(var(--prime-color), .5);
+    color: black;
   }
 </style>

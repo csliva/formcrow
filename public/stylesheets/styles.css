@@ -111,7 +111,13 @@ figure {
 .app {
   position: relative;
   min-height: 100vh;
-  background: #EEF3F2; }
+  background: #EEF3F2;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; }
   .app__header {
     display: block; }
   .app__body {
@@ -130,6 +136,18 @@ figure {
     margin: 32px; }
   .app h1, .app h2, .app h3, .app h4, .app h5 {
     text-align: center; }
+
+.error {
+  background: #965151;
+  color: white;
+  text-align: center;
+  font-family: "Roboto", sans-serif; }
+
+.success {
+  background: #39535d;
+  color: white;
+  text-align: center;
+  font-family: "Roboto", sans-serif; }
 
 .nav {
   display: grid;
@@ -158,6 +176,63 @@ figure {
     font-family: "Roboto", sans-serif; }
     .nav li a {
       text-decoration: none; }
+
+.home {
+  display: grid;
+  grid-template-columns: 1fr 10fr 20fr 1fr;
+  grid-template-rows: 1fr auto; }
+  .home__form {
+    grid-row-start: 1;
+    grid-column-start: 3;
+    grid-column-end: span 2;
+    margin-top: 32px;
+    justify-self: center; }
+  .home__signup {
+    padding: 24px 32px;
+    background: black;
+    color: white; }
+
+.card {
+  background: white;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  margin-top: 32px; }
+  .card__title {
+    background: black;
+    color: white;
+    margin: 0; }
+  .card__sticker {
+    background: white;
+    border: 3px solid #EEF3F2;
+    border-radius: 100%;
+    transform: translate(-10%, -40%);
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    float: right;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font-family: "Roboto", sans-serif; }
+    .card__sticker span {
+      text-align: center; }
+  .card__features {
+    list-style: none;
+    padding: 32px; }
+    .card__features li:before {
+      content: '\00b7';
+      font-size: 100px;
+      vertical-align: text-bottom; }
+  .card__arrow {
+    grid-row-start: 1;
+    grid-column-start: 2;
+    transform: translate(50%, 200px);
+    z-index: -1; }
+  .card--free {
+    grid-row-start: 1;
+    grid-column-start: 2; }
+  .card--paid {
+    grid-row-start: 2;
+    grid-column-start: 2; }
 
 .fa {
   display: inline-block; }

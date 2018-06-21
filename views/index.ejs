@@ -8,8 +8,12 @@
       <% include partials/header %>
     </header>
 
-    <main>
-      <form-crow query="What would help your business get more leads?" prime_color="#fafafa"/></form-crow>
+    <main class="home">
+      <% include partials/home/cards %>
+      <div class="home__form">
+        <form-crow query="What would help your business get more leads?" prime_color="#001D2E"/></form-crow>
+        <a class="home__signup" href="/users/signup">Sign Up</a>
+      </div>
     </main>
 
     <footer>

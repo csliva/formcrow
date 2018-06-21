@@ -23,7 +23,7 @@ router.post('/login', function(req, res, next) {
 /* Sign up -- render form */
 router.get('/signup', function(req, res, next) {
   if(!req.session.userId){
-    res.render('signup', {authed: false});
+    res.render('signup', {authed: false, sessionFlash: res.locals.sessionFlash});
   } else { return res.redirect('/dashboard'); }
 });
 /* Sign up -- post data */

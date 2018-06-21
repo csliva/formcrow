@@ -12,14 +12,12 @@ const bcrypt = require('bcrypt');
 exports.create = (req, res) => {
     // Validate request
     if(!req.body.email) {
-        return res.status(400).send({
-            message: "Email can not be empty"
-        });
+        req.session.flash = {"type": "error", "message": "Please enter an email"}
+        return res.redirect("/users/signup");
     }
     if(!req.body.password) {
-        return res.status(400).send({
-            message: "Password can not be empty"
-        });
+      req.session.flash = {"type": "error", "message": "Please enter a password"}
+      return res.redirect("/users/signup");
     }
 
     // Create a User
@@ -33,11 +31,11 @@ exports.create = (req, res) => {
     .then(data => {
       //store new session and send to dashboard
       req.session.userId = user._id
-      return res.redirect('/dashboard');
+      req.session.flash = {"type": "success", "message": "Welcome to Form Crow! Thanks for signing up!"}
+      return res.redirect("/dashboard");
     }).catch(err => {
-        res.status(500).send({
-            message: err.message || "Some error occurred while creating the User."
-        });
+      req.session.flash = {"type": "error", "message": "Something went awfully wrong signing up. Please reach out to us and let us know how we can help."}
+      return res.redirect("/users/signup");
     });
 };
 
@@ -49,24 +47,23 @@ exports.authenticate = (req, res) => {
             return res.status(404).send({
                 message: "User not found with id " + req.body.email
             });
+            req.session.flash = {"type": "error", "message": "Sorry, We couldn't find a user with the email " + req.body.email}
+            return res.redirect("/users/login");
         }
         if(!bcrypt.compareSync(req.body.password, user.password)){
-          return res.status(401).send({
-            message: 'Incorrect Password'
-          });
+          req.session.flash = {"type": "error", "message": "Woops, incorrect password."}
+          return res.redirect("/users/login");
         }
         req.session.userId = user._id
         return res.redirect('/dashboard');
 
     }).catch(err => {
         if(err.kind === 'ObjectId') {
-            return res.status(404).send({
-                message: "User not found with id " + req.body.email
-            });
+          req.session.flash = {"type": "error", "message": "Sorry, We couldn't find a user with the email " + req.body.email}
+          return res.redirect("/users/login");
         }
-        return res.status(500).send({
-            message: "Error retrieving user with id " + req.body.email
-        });
+          req.session.flash = {"type": "error", "message": "Sorry, Error retrieving user with the email " + req.body.email}
+          return res.redirect("/users/login");
     });
 };
 

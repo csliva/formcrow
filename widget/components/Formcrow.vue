@@ -4,17 +4,19 @@
         'formcrow__window--active': view_state == 2,
         'formcrow__window--complete': view_state == 3 } ">
       <div class="formcrow__slide">
-        <label>{{query}}</label>
+        <label class="formcrow__label">{{query}}</label>
         <input v-on:keyup.13="submitQuery" type="text" v-model="query_input" />
-        <button type="button" v-on:click="submitQuery">Next</button>
+        <button class="formcrow__next" type="button" v-on:click="submitQuery">&rarr;</button>
       </div>
       <div class="formcrow__slide">
-        <label>What's the best way to reach out?</label>
+        <label class="formcrow__label">What's the best way to reach out?</label>
         <toggle-button
           v-model="contact_toggle"
           :value="true"
           :labels="{checked: 'Phone', unchecked: 'Email'}"
           :color="{checked: '#00FF00', unchecked: '#FF0000'}"
+          :width='100'
+          :height='25'
         />
         <input v-on:keyup.13="submitFormCrow" type="text" v-model="contact_input" />
         <span>{{contact_input | filter_phone }}</span>
@@ -102,9 +104,33 @@ export default {
 </script>
 
 <style lang="css" scoped>
-.formcrow { /*background-color: var(--prime-color);*/ }
-  .formcrow button {
-    background-color: rgba(var(--prime-color), .5);
-    color: black;
-  }
+.formcrow {
+  width: 100%;
+  background-color: white;
+  padding: 24px;
+  font-size: 24px;
+}
+.formcrow__label{
+  width: 100%;
+  display: block;
+}
+.formcrow input{
+  width: 100%;
+  font-size: 16px;
+  line-height: 18px;
+  padding: 4px;
+  margin: 16px 0;
+}
+.formcrow__next{
+  border: 0;
+  background-color: var(--prime-color);
+  border-radius: 100%;
+  width: 32px;
+  height: 32px;
+  color: white;
+}
+.formcrow__next:focus{
+  outline: none;
+  filter: opacity(80%);
+}
 </style>

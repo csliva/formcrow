@@ -69,12 +69,14 @@ var usersRouter = require('./routes/users.js');
 var queryRouter = require('./routes/queries.js');
 var leadRouter = require('./routes/leads.js');
 var dashboardRouter = require('./routes/dashboard.js');
+var emailRouter = require('./routes/email.js');
 
 app.use('/', homeRouter);
 app.use('/query', queryRouter);
 app.use('/lead', leadRouter);
 app.use('/users', usersRouter);
 app.use('/dashboard', dashboardRouter);
+app.use('/email', emailRouter);
 
 
 //////////////////////////////////////////

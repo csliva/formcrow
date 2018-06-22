@@ -12,16 +12,15 @@
         <label class="formcrow__label">What's the best way to reach out?</label>
         <toggle-button
           v-model="contact_toggle"
-          :value="true"
           :labels="{checked: 'Phone', unchecked: 'Email'}"
           :color="{checked: '#00FF00', unchecked: '#FF0000'}"
+          :sync="true"
           :width='100'
           :height='25'
         />
         <input v-on:keyup.13="submitFormCrow" type="text" v-model="contact_input" />
-        <span>{{contact_input | filter_phone }}</span>
-        <span>{{contact_input | filter_email }}</span>
-        <button v-on:click="submitFormCrow" type="button">Submit</button>
+        <button class="formcrow__submit" v-on:click="submitFormCrow" type="button">Submit</button>
+        <span>{{ testContact }}</span>
       </div>
       <div class="formcrow__slide">
         <p>Thank you for your submission!</p>
@@ -44,6 +43,7 @@ export default {
       ip: "",
       contact_input: "",
       contact_toggle: true,
+      filled: false,
       view_state: 1
     }
   },
@@ -69,14 +69,19 @@ export default {
         return;
       }
   },
-  filters: {
-    filter_phone: function (phone) {
-      if (!phone) return '';
-      return (/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im).test(phone);
-    },
-    filter_email: function (email){
-      if(!email) return '';
-      return (/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/).test(email);
+  computed: {
+    testContact: function(){
+      if (!this.contact_input) {return ''}
+      if ((/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im).test(this.contact_input)){
+        this.contact_toggle = true
+        this.filled = true
+        return '✓'
+      };
+      if ((/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/).test(this.contact_input)){
+        this.contact_toggle = false
+        this.filled = true
+        return '✓'
+      };
     }
   },
   methods: {
@@ -115,22 +120,30 @@ export default {
   display: block;
 }
 .formcrow input{
-  width: 100%;
+  width: calc(100% - 70px);
   font-size: 16px;
   line-height: 18px;
   padding: 4px;
   margin: 16px 0;
 }
-.formcrow__next{
+.formcrow__next, .formcrow__submit{
   border: 0;
   background-color: var(--prime-color);
-  border-radius: 100%;
-  width: 32px;
-  height: 32px;
+  width: 60px;
+  height: 30px;
   color: white;
+  vertical-align: middle;
+  transform: translateX(-8px);
 }
-.formcrow__next:focus{
+.formcrow__next:hover, .formcrow__submit:hover{
+  filter: opacity(85%);
+}
+.formcrow__next:focus, .formcrow__submit:focus{
   outline: none;
-  filter: opacity(80%);
+  filter: opacity(70%);
+}
+.formcrow input:focus{
+  outline: none;
+  filter: drop-shadow(2px 4px 3px #eaeaea);
 }
 </style>

@@ -1,3 +1,4 @@
+#### Kyles Change
 # Form Crow
 ##### The form CRO widget as a service
 
@@ -22,7 +23,7 @@ The widget is customizable by passing in props. The main props will be:
 2. query="The question the form will ask"
 3. prime_color="#xxxxxx" //The base color that will be used to build the css design
 
-If further CSS customization is needed, the end user can use specificity to apply their own css properties. the id #formcrow has been left alone so any styles starting with the widget ID will overwrite regular widget styles. 
+If further CSS customization is needed, the end user can use specificity to apply their own css properties. the id #formcrow has been left alone so any styles starting with the widget ID will overwrite regular widget styles.
 
 
 ## Todo Widget

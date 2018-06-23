@@ -1,5 +1,5 @@
 <template>
-  <div id="formcrow" class="formcrow"  v-bind:style="{'--prime-color': prime_color}">
+  <div id="formcrow" class="formcrow"  v-bind:style="{'--prime-color': prime_color, '--text-color': this.colors[3]}">
     <div v-bind:class="{ 'formcrow__window--start': view_state == 1,
         'formcrow__window--active': view_state == 2,
         'formcrow__window--complete': view_state == 3 } ">
@@ -10,7 +10,7 @@
       </div>
       <div class="formcrow__slide">
         <label class="formcrow__label">What's the best way to reach out?</label>
-        <toggle-button
+        <toggle-button id="formcrow__toggle"
           v-model="contact_toggle"
           :labels="{checked: 'Phone', unchecked: 'Email'}"
           :color="{checked: this.colors[1], unchecked: this.colors[2]}"
@@ -134,13 +134,19 @@ export default {
     l = l*100;
     l = Math.round(l);
     h = Math.round(360*h);
-    var l2 = Math.abs(l-30)
-    var l3 = Math.abs(l-60)
+    var l2 = Math.abs(100 % l+20)
+    var l3 = Math.abs(100 % l+40)
+  //  var l4 = Math.abs(100 % l+60)
+  //  var s4 = Math.abs(100 % s+40)
+  var c4;
+  if(l <= 50){ c4 = 'hsl(0,0%,100%)';}
+  if(l > 50){ c4 = 'hsl(0,0%,0%)';}
 
     var c1= 'hsl(' + h + ', ' + s + '%, ' + l + '%)';
     var c2= 'hsl(' + h + ', ' + s + '%, ' + l2 + '%)';
     var c3= 'hsl(' + h + ', ' + s + '%, ' + l3 + '%)';
-    return [c1, c2, c3]
+    //var c4= 'hsl(' + h + ', ' + s4 + '%, ' + l4 + '%)';
+    return [c1, c2, c3, c4]
     },
   },
 }
@@ -169,9 +175,11 @@ export default {
   background-color: var(--prime-color);
   width: 60px;
   height: 30px;
-  color: white;
   vertical-align: middle;
   transform: translateX(-8px);
+}
+.formcrow__next, .formcrow__submit, #formcrow__toggle >>> .v-switch-label{
+  color: var(--text-color);
 }
 .formcrow__next:hover, .formcrow__submit:hover{
   filter: opacity(85%);

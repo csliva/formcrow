@@ -1,14 +1,12 @@
 <template>
   <div id="formcrow" class="formcrow"  v-bind:style="{'--prime-color': prime_color, '--text-color': this.colors[3]}">
-    <div v-bind:class="{ 'formcrow__window--start': view_state == 1,
-        'formcrow__window--active': view_state == 2,
-        'formcrow__window--complete': view_state == 3 } ">
-      <div class="formcrow__slide">
+    <transition name="fade" mode="out-in">
+      <div v-if="view_state==1" :key="1" class="formcrow__slide">
         <label class="formcrow__label">{{query}}</label>
         <input v-on:keyup.13="submitQuery" type="text" v-model="query_input" />
         <button class="formcrow__next" type="button" v-on:click="submitQuery">&rarr;</button>
       </div>
-      <div class="formcrow__slide">
+      <div v-if="view_state==2" :key="2" class="formcrow__slide">
         <label class="formcrow__label">What's the best way to reach out?</label>
         <toggle-button id="formcrow__toggle"
           v-model="contact_toggle"
@@ -22,10 +20,10 @@
         <button class="formcrow__submit" v-on:click="submitFormCrow" type="button">Submit</button>
         <span>{{ testContact }}</span>
       </div>
-      <div class="formcrow__slide">
+      <div v-if="view_state==3" :key="3" class="formcrow__slide">
         <p>Thank you for your submission!</p>
       </div>
-    </div>
+    </transition>
   </div>
 
 </template>
@@ -191,5 +189,12 @@ export default {
 .formcrow input:focus{
   outline: none;
   filter: drop-shadow(2px 4px 3px #eaeaea);
+}
+.fade-enter-active, .fade-leave-active {
+    transition: all .5s ease;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active in <2.1.8 */ {
+    opacity: 0;
+    transform: translateX(-10px);
 }
 </style>

@@ -12,11 +12,11 @@ exports.index = (req, res) => {
 
 exports.single = (req, res) => {
   Queries.
-    find( {_id: req.params.postID} ).
+    find( {_id: req.params.postId} ).
     exec(function (err, query) {
+      console.log(query)
       if (err) return handleError(err);
       //map out unrelated user information
-      console.log(query);
       return res.render('dashboard-single', { query: query, authed: true });
   });
 }

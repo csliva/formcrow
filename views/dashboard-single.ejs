@@ -12,12 +12,16 @@
 
     <main>
 
-      <% query.forEach(function(entry) { %>
-        <li class="color">
-          <%= entry.query %>
-          <a href="/dashboard/<%= entry._id %>">View</a>
-        </li>
-      <% }); %>
+      <ul>
+        <% query.forEach(function(entry) { %>
+          <li class="color">
+            <%= entry.query %>
+          </li>
+        <% }); %>
+      </ul>
+
+
+      <a href="/dashboard/">Go Back</a>
 
     </main>
 

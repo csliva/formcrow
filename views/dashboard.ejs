@@ -17,7 +17,10 @@
 
       <ul>
         <% queries.forEach(function(entry) { %>
-              <li class="color"><%= entry.query %></li>
+              <li class="color">
+                <%= entry.query %>
+                <a href="/dashboard/<%= entry._id %>">View</a>
+              </li>
           <% }); %>
       </ul>
     </main>

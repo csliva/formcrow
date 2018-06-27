@@ -19,7 +19,8 @@ exports.create = (req, res) => {
     // Create a Submission
     const query = new Query({
       query: req.body.query,
-      user: req.session.userId
+      user: req.session.userId,
+      color: '#fff'
     });
     // Save Submission in the database
     query.save()

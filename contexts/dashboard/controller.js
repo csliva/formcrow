@@ -12,10 +12,11 @@ exports.index = (req, res) => {
 
 exports.single = (req, res) => {
   Queries.
-    find( {user: req.session.userId} ).
-    exec(function (err, queries) {
+    find( {_id: req.params.postID} ).
+    exec(function (err, query) {
       if (err) return handleError(err);
       //map out unrelated user information
-      return res.render('dashboard-single', { queries: queries, authed: true });
+      console.log(query);
+      return res.render('dashboard-single', { query: query, authed: true });
   });
 }

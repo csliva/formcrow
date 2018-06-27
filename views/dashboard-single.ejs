@@ -8,9 +8,16 @@
       <% include partials/header %>
     </header>
 
+
+
     <main>
 
-      <p>Single Page Template</p>
+      <% query.forEach(function(entry) { %>
+        <li class="color">
+          <%= entry.query %>
+          <a href="/dashboard/<%= entry._id %>">View</a>
+        </li>
+      <% }); %>
 
     </main>
 

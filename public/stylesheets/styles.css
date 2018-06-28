@@ -186,6 +186,10 @@ code {
   text-align: center;
   font-family: "Roboto", sans-serif; }
 
+footer {
+  display: block;
+  width: 100%; }
+
 .nav {
   display: grid;
   grid-template-columns: 1fr 10fr 20fr 1fr;
@@ -232,42 +236,60 @@ code {
     justify-self: center;
     width: 100%;
     height: 200px; }
-    .home__code__header {
-      width: 100%;
-      background: #D7E7E4;
-      height: 20px; }
-      .home__code__header span {
-        font-family: "Roboto", sans-serif;
-        font-size: 12px;
-        line-height: 12px;
-        font-family: "Courier New", Courier, monospace;
-        vertical-align: text-top;
-        display: inline-block;
-        color: #828282;
-        padding: 0 29px;
-        background: #bde2db; }
-      .home__code__header__button {
-        width: 10px;
-        height: 10px;
-        border-radius: 100%;
-        margin: 0 3px;
-        vertical-align: text-top;
-        display: inline-block; }
-        .home__code__header__button--red {
-          background: #F34B16; }
-        .home__code__header__button--yellow {
-          background: #FFE24C; }
-        .home__code__header__button--green {
-          background: #69D02A; }
-    .home__code__body {
-      background: white;
-      width: 100%;
-      display: block;
-      height: 200px;
-      font-family: "Courier New", Courier, monospace;
-      color: #828282; }
   .home__try {
     font-family: "Roboto", sans-serif; }
+
+.code__header {
+  width: 100%;
+  background: #D7E7E4;
+  height: 20px; }
+  .code__header span {
+    font-family: "Roboto", sans-serif;
+    font-size: 12px;
+    line-height: 12px;
+    font-family: "Courier New", Courier, monospace;
+    vertical-align: text-top;
+    display: inline-block;
+    color: #828282;
+    padding: 0 29px;
+    background: #bde2db; }
+
+.code__button--red {
+  width: 10px;
+  height: 10px;
+  border-radius: 100%;
+  margin: 0 3px;
+  vertical-align: text-top;
+  display: inline-block;
+  background: #F34B16; }
+
+.code__button--yellow {
+  width: 10px;
+  height: 10px;
+  border-radius: 100%;
+  margin: 0 3px;
+  vertical-align: text-top;
+  display: inline-block;
+  background: #F34B16;
+  background: #FFE24C; }
+
+.code__button--green {
+  width: 10px;
+  height: 10px;
+  border-radius: 100%;
+  margin: 0 3px;
+  vertical-align: text-top;
+  display: inline-block;
+  background: #F34B16;
+  background: #69D02A; }
+
+.code__body {
+  background: white;
+  width: 100%;
+  display: block;
+  height: 200px;
+  font-family: "Courier New", Courier, monospace;
+  color: #828282; }
 
 .card {
   background: white;

@@ -4,9 +4,10 @@
   "private": true,
   "scripts": {
     "start": "parallelshell \"node ./bin/www \" \"gulp styles\"",
-    "watch": "parallelshell \"nodemon ./bin/www \" \"gulp watch\" \"yarn run widget-watch\"",
-    "compile-widget": "webpack --config ./widget/webpack.config.js --mode 'development'",
-    "widget-watch": "webpack --config ./widget/webpack.config.js --mode 'development' --watch"
+    "watch": "parallelshell \"nodemon ./bin/www \" \"gulp watch\" \"yarn run widget-watch\" \"yarn run create-form\" ",
+    "compile-widget": "webpack --config ./widget/webpack.config.js --mode development",
+    "widget-watch": "webpack --config ./widget/webpack.config.js --mode development --watch",
+    "create-form": "webpack --config ./public/create-form/webpack.config.js --mode development --watch"
   },
   "dependencies": {
     "babel-core": "^6.26.3",

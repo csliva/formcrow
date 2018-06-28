@@ -9,12 +9,9 @@
     </header>
 
     <main>
-      <form action="query" method="POST">
-        <label for="query">Ask customers a new question</label>
-        <input type="text" placeholder="What do you want to know?" name="query" />
-        <button type="submit">Create New Form</button>
-      </form>
 
+      <a href="/dashboard/create">Create a new form</a>
+      
       <ul>
         <% queries.forEach(function(entry) { %>
           <li class="color">

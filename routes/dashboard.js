@@ -13,8 +13,18 @@ router.get('/', function(req, res, next) {
   }
 });
 
+router.get('/create', function(req, res, next) {
+  if(req.session.userId){
+    // load in dashboard data
+    controller.create(req, res)
+  } else {
+    //Not logged in
+    return res.redirect('users/login');
+  }
+});
+
 /* Check to see if logged in */
-router.get('/:postID', function(req, res, next) {
+router.get('/:postId', function(req, res, next) {
   if(req.session.userId){
     // load in dashboard data
     controller.single(req, res)

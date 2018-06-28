@@ -7,7 +7,7 @@
         <button class="formcrow__next" type="button" v-on:click="submitQuery">&rarr;</button>
       </div>
       <div v-if="view_state==2" :key="2" class="formcrow__slide">
-        <label class="formcrow__label">What's the best way to reach out?</label>
+        <label class="formcrow__label">Give us an email or number to reach you!</label>
         <toggle-button id="formcrow__toggle"
           v-model="contact_toggle"
           :labels="{checked: 'Phone', unchecked: 'Email'}"
@@ -40,7 +40,7 @@ export default {
       query_input: "",
       ip: "",
       contact_input: "",
-      contact_toggle: true,
+      contact_toggle: false,
       filled: false,
       view_state: 1,
       colors: this.setColors(this.prime_color)

@@ -4,10 +4,9 @@
   "private": true,
   "scripts": {
     "start": "parallelshell \"node ./bin/www \" \"gulp styles\"",
-    "watch": "parallelshell \"nodemon ./bin/www \" \"gulp watch\" \"yarn run widget-watch\" \"yarn run create-form\" ",
+    "watch": "parallelshell \"nodemon ./bin/www \" \"gulp watch\" \"yarn run widget-watch\"",
     "compile-widget": "webpack --config ./widget/webpack.config.js --mode development",
-    "widget-watch": "webpack --config ./widget/webpack.config.js --mode development --watch",
-    "create-form": "webpack --config ./public/create-form/webpack.config.js --mode development --watch"
+    "widget-watch": "webpack --config ./widget/webpack.config.js --mode development --watch"
   },
   "dependencies": {
     "babel-core": "^6.26.3",
@@ -28,6 +27,7 @@
     "nodemailer": "^4.6.7",
     "tinycolor2": "^1.4.1",
     "uglify-es": "git://github.com/mishoo/UglifyJS2.git#harmony",
+    "vue-color": "^2.4.6",
     "vue-js-toggle-button": "^1.2.3",
     "vue-loader": "14.2.2"
   },
@@ -39,6 +39,7 @@
     "gulp-sass": "^4.0.1",
     "gulp-watch": "^5.0.0",
     "nodemon": "^1.17.5",
+    "parallelshell": "darkguy2008/parallelshell",
     "rimraf": "^2.6.1",
     "sass-loader": "^7.0.3",
     "uglify-js": "git://github.com/mishoo/UglifyJS2.git#harmony",
@@ -47,7 +48,6 @@
     "vue-style-loader": "^2.0.5",
     "vue-template-compiler": "^2.2.6",
     "webpack": "^4.12.0",
-    "webpack-cli": "^3.0.7",
-    "parallelshell": "darkguy2008/parallelshell"
+    "webpack-cli": "^3.0.7"
   }
 }

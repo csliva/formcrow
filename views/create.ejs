@@ -2,6 +2,8 @@
 <html lang="en">
   <head>
     <% include partials/head %>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src='/javascripts/vue-color.min.js'></script>
   </head>
   <body class="app">
     <header>
@@ -11,17 +13,56 @@
     <main>
     <div class="create">
       <h2>Create New Form Widget</h2>
-        <form action="query" method="POST">
-          <label for="query">Ask customers a new question</label>
-          <input type="text" placeholder="What do you want to know?" name="query" />
-          <button type="submit">Create New Form</button>
-      </form>
+      <div id="new-crow">
+        <h3>1. Ask customers your most important question</h3>
+          <input v-model="query" type="text" name="query" />
+        <h3>2. Pick a primary color scheme</h3>
+        <div>
+          <sketch-picker v-model="colors" />
+        </div>
+        <button v-on:click="generateCrow">Generate a widget</button>
+      </div>
     </div>
     </main>
 
     <footer>
       <% include partials/footer %>
     </footer>
+
+    <script>
+      var Sketch= VueColor.Sketch
+      var colors = '#194d33'
+      new Vue({
+        el: '#new-crow',
+        components: {
+          'sketch-picker': Sketch
+        },
+        data () {
+          return {
+            colors,
+            query: "",
+            user: "<%- userId %>"
+          }
+        },
+        methods: {
+          generateCrow(){
+            console.log(this.userId)
+            let that = this
+            fetch('http://localhost:3000/query', {
+              method: 'post',
+              headers: {
+              'Accept': 'application/json, text/plain, */*',
+              'Content-Type': 'application/json'
+            },
+              body: JSON.stringify({query: that.query, color: that.colors, user: that.user})
+            }).then(res=>res.json())
+            .then(res => {
+              window.location="http://localhost:3000/dashboard/" + res._id
+            });
+          },
+      }
+      })
+    </script>
 
   </body>
 </html>

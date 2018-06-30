@@ -15,18 +15,19 @@ exports.create = (req, res) => {
             message: "Submission can not be empty"
         });
     }
-
     // Create a Submission
     const query = new Query({
       query: req.body.query,
-      user: req.session.userId,
-      color: '#fff'
+      user: req.body.user,
+      color: req.body.color.hex
     });
     // Save Submission in the database
     query.save()
     .then(data => {
-      return res.redirect('dashboard');
+      console.log(data)
+      res.send(data);
     }).catch(err => {
+        console.log(err)
         res.status(500).send({
             message: err.message || "Some error occurred while creating the Submission."
         });

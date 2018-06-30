@@ -14,7 +14,7 @@
     <%- JSON.stringify(query) %>
       <code>
         &lt;script src='formcrow.com/widget/formcrow.js'>&lt;/script>
-        &lt;form-crow query="<%- %>" prime_color="#001D2E"/>&lt;/form-crow>
+        &lt;form-crow query="<%- query.query %>" prime_color="<%- query.color %>" uid="<%- query.formId %>"/>&lt;/form-crow>
       </code>
 
 

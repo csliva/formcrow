@@ -18,7 +18,6 @@
         />
         <input v-on:keyup.13="submitFormCrow" type="text" v-model="contact_input" />
         <button class="formcrow__submit" v-on:click="submitFormCrow" type="button">Submit</button>
-        <span>{{ testContact }}</span>
       </div>
       <div v-if="view_state==3" :key="3" class="formcrow__slide">
         <p>Thank you for your submission!</p>
@@ -95,7 +94,7 @@ export default {
         'Accept': 'application/json, text/plain, */*',
         'Content-Type': 'application/json'
       },
-        body: JSON.stringify({submission: that.query_input, contact: that.contact_input, ip: that.ip})
+        body: JSON.stringify({submission: that.query_input, contact: that.contact_input, ip: that.ip, formId: that.uid})
       }).then(res=>res.json())
       .then(res => {
         this.view_state = this.view_state + 1;

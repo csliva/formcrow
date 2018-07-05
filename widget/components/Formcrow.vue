@@ -88,6 +88,7 @@ export default {
     },
     submitFormCrow(){
       let that = this
+      alert(that.uid)
       fetch('http://localhost:3000/lead', {
         method: 'post',
         headers: {

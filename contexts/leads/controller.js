@@ -19,7 +19,8 @@ exports.create = (req, res) => {
       const lead = new Lead({
         submission: req.body.submission,
         contact: req.body.contact,
-        ip: req.body.ip
+        ip: req.body.ip,
+        formId: req.body.formId
       });
 
     // Save Submission in the database

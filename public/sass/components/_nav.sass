@@ -3,15 +3,18 @@
   grid-template-columns: 1fr 10fr 20fr 1fr
   height: $blh*2
   line-height: $blh*2
-  +gradient-bg-horiz(rgba($clr-main, .3), rgba($clr-main, .35))
+  background: white
   &__logo
     grid-column-start: 2
     text-decoration: none
+    padding: 10px
     img, h1
-      height: $blh*2
-      padding: 5px
+      line-height: $blh*.5
       display: inline-block
       vertical-align: top
+      font-size: $blh*.5
+      width: $blh
+      padding: 5px
   &__list
     grid-column-start: 3
     text-align: right

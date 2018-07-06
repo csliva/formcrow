@@ -2,21 +2,9 @@
 // HOME (grid)
 ///////////////////////////
 .home
-  display: grid
-  grid-template-columns: 1fr 10fr 1fr 20fr 1fr
-  grid-template-rows: 1fr auto
   &__form
-    grid-row-start: 1
-    grid-column-start: 4
-    grid-column-end: span 1
-    margin-top: $blh
-    justify-self: center
   &__code
-    grid-row-start: 2
-    grid-column-start: 4
-    grid-column-end: span 1
     margin-top: $blh
-    justify-self: center
     width: 100%
     height: 200px
   &__try
@@ -114,3 +102,46 @@
   &--paid
     grid-row-start: 2
     grid-column-start: 2
+
+////////////////////////////////
+// HERO
+////////////////////////////////
+.hero
+  width: 100%
+  display: block
+  background: white
+  text-align: center
+  padding-bottom: $blh
+  margin-bottom: $blh
+  img
+    width: 500px
+    max-width: 100vw
+  h2
+    padding-top: $blh
+.instruction
+  transform: translateX(-50px)
+  &__circle
+    position: relative
+    background: #eef3f2
+    border-radius: 100%
+    width: 100px
+    height: 100px
+    display: inline-block
+    vertical-align: top
+    transform: translateX(50px)
+    border: 10px solid #fafece;
+  &__number
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-65%, -50%)
+    font-size: $fs-base * 4
+    font-family: "Roboto", sans-serif
+    font-style: italic
+  &__step
+    display: inline-block
+    font-size: $fs-base * 2
+    background: #FAFECE
+    line-height: 100px
+    vertical-align: middle
+    padding: 0 50px

@@ -9,10 +9,33 @@
     </header>
 
     <main class="home">
-      <% include partials/home/cards %>
-      <div class="home__form">
+      <div class="hero">
+        <h2>Generate forms and get leads</h2>
+        <h4>Form Crow is an embeddable web form that makes lead collection simple.</h4>
+        <img src="/images/SimplifyForms.svg" />
+      </div>
+
+        <h2>Try Form Crow</h2>
         <script src='formcrow.com/widget/formcrow.js'></script>
         <form-crow query="What would help your business get more leads?" prime_color="#6399A8" uid="5b3dea9e20917170ee2eb3a7"/></form-crow>
+        <img width=150 src="/images/TryIt.svg" />
+
+        <h2>Start collecting leads in 5 minutes</h2>
+        <div class="instruction">
+          <div class="instruction__circle"><span class="instruction__number">1</span></div>
+          <span class="instruction__step">Ask your customers the right question</span>
+        </div>
+        <div class="instruction">
+          <div class="instruction__circle"><span class="instruction__number">2</span></div>
+          <span class="instruction__step">Generate the simple 2 lines of code</span>
+        </div>
+        <div class="instruction">
+          <div class="instruction__circle"><span class="instruction__number">3</span></div>
+          <span class="instruction__step">Embed and enjoy</span>
+        </div>
+
+      <% include partials/home/cards %>
+      <div class="home__form">
         <p class="home__try">Try it out!</p>
       </div>
       <div class="home__code">

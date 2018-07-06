@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "parallelshell \"node ./bin/www \" \"gulp styles\"",
-    "watch": "parallelshell \"nodemon ./bin/www \" \"gulp watch\" \"yarn run widget-watch\"",
+    "watch": "parallelshell \"nodemon ./bin/www \" \"gulp\" \"yarn run widget-watch\"",
     "compile-widget": "webpack --config ./widget/webpack.config.js --mode development",
     "widget-watch": "webpack --config ./widget/webpack.config.js --mode development --watch"
   },
@@ -35,7 +35,7 @@
     "cross-env": "^4.0.0",
     "css-loader": "^0.26.2",
     "file-loader": "^0.11.1",
-    "gulp": "^3.9.1",
+    "gulp": "^4.0.0",
     "gulp-sass": "^4.0.1",
     "gulp-watch": "^5.0.0",
     "nodemon": "^1.17.5",

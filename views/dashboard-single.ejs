@@ -20,6 +20,14 @@
 
       <a href="/dashboard/">Go Back</a>
 
+       <ul>
+        <% leads.forEach(function(lead) { %>
+          <li class="color">
+            <%= lead.submission %>
+          </li>
+        <% }); %>
+      </ul>
+
     </main>
 
     <footer>

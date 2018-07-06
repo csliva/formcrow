@@ -16,13 +16,15 @@
           :width='100'
           :height='25'
         />
+        <input type="checkbox" class="formcrow__honey" v-model="honey">
         <input v-on:keyup.13="submitFormCrow" type="text" v-model="contact_input" />
         <button class="formcrow__submit" v-on:click="submitFormCrow" type="button">Submit</button>
       </div>
       <div v-if="view_state==3" :key="3" class="formcrow__slide">
-        <p>Thank you for your submission!</p>
+        <p>Thank you! We'll be in touch!</p>
       </div>
     </transition>
+    <span class="formcrow__error">{{error}}</span>
   </div>
 
 </template>
@@ -40,9 +42,11 @@ export default {
       ip: "",
       contact_input: "",
       contact_toggle: false,
-      filled: false,
       view_state: 1,
-      colors: this.setColors(this.prime_color)
+      colors: this.setColors(this.prime_color),
+      error: "",
+      valid: false,
+      honey: false
     }
   },
   created: function(){
@@ -67,28 +71,36 @@ export default {
         return;
       }
   },
-  computed: {
-    testContact: function(){
-      if (!this.contact_input) {return ''}
+  watch: {
+    contact_input: function(){
+      if (!this.contact_input) {this.valid = false}
       if ((/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im).test(this.contact_input)){
-        this.contact_toggle = true
-        this.filled = true
-        return '✓'
-      };
+          this.contact_toggle = true
+          this.valid = true
+          this.error = ""
+        };
       if ((/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/).test(this.contact_input)){
-        this.contact_toggle = false
-        this.filled = true
-        return '✓'
-      };
+          this.contact_toggle = false
+          this.valid = true
+          this.error = ""
+        };
     }
   },
   methods: {
     submitQuery(){
-      this.view_state = this.view_state + 1
+      if(this.query_input.length >= 5){
+        this.error = ""
+        this.view_state = this.view_state + 1
+        //include ajax submission 
+      }
+      else {
+        this.error = "We'd love a little more input. Could you write a few more words?"
+      }
     },
     submitFormCrow(){
+      this.contactValidation
+      if(this.valid){
       let that = this
-      alert(that.uid)
       fetch('http://localhost:3000/lead', {
         method: 'post',
         headers: {
@@ -102,6 +114,7 @@ export default {
         that.query_input = "";
         that.contact_input = "";
       });
+    } else { this.error = "Woops, it looks like you need a valid email or phone number"}
     },
     setColors: function(hex) {
     var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
@@ -168,6 +181,7 @@ export default {
   padding: 4px;
   margin: 16px 0;
 }
+.formcrow__error{color: red; opacity: 0.7; font-size: 12px; line-height: 12px;}
 .formcrow__next, .formcrow__submit{
   border: 0;
   background-color: var(--prime-color);
@@ -196,5 +210,9 @@ export default {
 .fade-enter, .fade-leave-to /* .fade-leave-active in <2.1.8 */ {
     opacity: 0;
     transform: translateX(-10px);
+}
+.formcrow__honey {
+  position: absolute;
+  left: -10000px;
 }
 </style>

@@ -1,4 +1,5 @@
 const Queries = require('../queries/model.js');
+const Leads = require('../leads/model.js');
 
 exports.index = (req, res) => {
   Queries.
@@ -20,6 +21,8 @@ exports.single = (req, res) => {
   findById(req.params.postId, function (err, query) {
     if (err) return handleError(err);
       //map out unrelated user information
-      return res.render('dashboard-single', { query: query, authed: true });
+      Leads.find({formId: query._id}, function(err, leads){
+        return res.render('dashboard-single', { query: query, leads: leads, authed: true });
+      })
   } );
 }

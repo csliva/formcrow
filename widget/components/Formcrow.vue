@@ -91,7 +91,7 @@ export default {
       if(this.query_input.length >= 5){
         this.error = ""
         this.view_state = this.view_state + 1
-        //include ajax submission 
+        //include ajax submission
       }
       else {
         this.error = "We'd love a little more input. Could you write a few more words?"
@@ -166,9 +166,10 @@ export default {
 <style lang="css" scoped>
 .formcrow {
   width: 100%;
-  background-color: white;
+  max-width: 500px;
   padding: 24px;
   font-size: 24px;
+  margin: auto;
 }
 .formcrow__label{
   width: 100%;

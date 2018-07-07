@@ -8,14 +8,22 @@
       <% include partials/header %>
     </header>
 
-
+    <script>
+    function copy() {
+      var copyText = document.getElementById("code");
+      copyText.select();
+      document.execCommand("copy");
+      alert("Copied!");
+    }
+    </script>
 
     <main>
     <%- JSON.stringify(query) %>
-      <code>
+      <button onClick="copy()">Copy</button>
+      <textarea id="code">
         &lt;script src='formcrow.com/widget/formcrow.js'>&lt;/script>
         &lt;form-crow query="<%- query.query %>" prime_color="<%- query.color %>" uid="<%- query._id %>"/>&lt;/form-crow>
-      </code>
+      </textarea>
 
 
       <a href="/dashboard/">Go Back</a>

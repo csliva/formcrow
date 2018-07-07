@@ -34,4 +34,16 @@ router.get('/:postId', function(req, res, next) {
   }
 });
 
+/* Check to see if logged in */
+router.get('/csv/:postId', function(req, res, next) {
+  if(req.session.userId){
+    // load in dashboard data
+    controller.csv(req, res)
+  } else {
+    //Not logged in
+    return res.redirect('users/login');
+  }
+});
+
+
 module.exports = router;

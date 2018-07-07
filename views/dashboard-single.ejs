@@ -25,13 +25,14 @@
         &lt;form-crow query="<%- query.query %>" prime_color="<%- query.color %>" uid="<%- query._id %>"/>&lt;/form-crow>
       </textarea>
 
+      <form-crow query="<%- query.query %>" prime_color="<%- query.color %>" uid="<%- query._id %>"/></form-crow>
 
       <a href="/dashboard/">Go Back</a>
 
        <ul>
         <% leads.forEach(function(lead) { %>
           <li class="color">
-            <%= lead.submission %>
+            <%= lead.submission %> | <%= lead.contact %>
           </li>
         <% }); %>
       </ul>

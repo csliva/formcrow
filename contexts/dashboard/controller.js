@@ -26,3 +26,21 @@ exports.single = (req, res) => {
       })
   } );
 }
+
+const json2csv = require('json2csv').parse;
+const fields = ['submission', 'contact', 'ip'];
+const opts = { fields };
+
+exports.csv = (req, res) => {
+  Queries.
+  findById(req.params.postId, function (err, query) {
+    if (err) return handleError(err);
+      //map out unrelated user information
+      Leads.find({formId: query._id}, function(err, leads){
+        const csv = json2csv(leads, opts);
+        console.log(csv);
+        return res.send(new Buffer(csv));
+        // return res.render('dashboard-single', { query: query, leads: leads, authed: true });
+      })
+  } );
+}

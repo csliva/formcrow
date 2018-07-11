@@ -9,17 +9,21 @@
     </header>
 
     <main>
+      <div class="dashboard">
 
-      <a href="/dashboard/create">Create a new form</a>
+        <div class="dashboard__action">
+          <a href="/dashboard/create">Create a new form →</a>
+        </div>
 
-      <ul>
-        <% queries.forEach(function(entry) { %>
-          <li class="color">
-            <%= entry.query %>
-            <a href="/dashboard/<%= entry._id %>">View</a>
-          </li>
-        <% }); %>
-      </ul>
+        <ul class="dashboard__submissions">
+          <% queries.forEach(function(entry) { %>
+            <li style="border-left: 5px solid <%= entry.color %>">
+              <%= entry.query %>
+              <a href="/dashboard/<%= entry._id %>">View</a>
+            </li>
+          <% }); %>
+        </ul>
+      </div>
     </main>
 
     <footer>

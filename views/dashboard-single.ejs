@@ -11,32 +11,48 @@
     <script>
     function copy() {
       var copyText = document.getElementById("code");
+      var copyButton = document.getElementById("copy");
       copyText.select();
       document.execCommand("copy");
-      alert("Copied!");
+      copyButton.value = "Copied";
+      copyButton.animate([
+          // keyframes
+          { transform: 'translateY(0px)' },
+          { transform: 'translateY(-5px)' },
+          { transform: 'translateY(-2px)' }
+        ], {
+        // timing options
+        duration: 400,
+        iterations: 1
+      });
     }
     </script>
 
     <main>
-    <%- JSON.stringify(query) %>
-      <button onClick="copy()">Copy</button>
-      <textarea id="code">
-        &lt;script src='formcrow.com/widget/formcrow.js'>&lt;/script>
-        &lt;form-crow query="<%- query.query %>" prime_color="<%- query.color %>" uid="<%- query._id %>"/>&lt;/form-crow>
-      </textarea>
+      <div class="dashboard">
+        <div class="dashboard__action">
+          <a href="/dashboard/">Dashboard →</a>
+        </div>
+        <div class="dashboard__code">
+          <div class="code__header">
+            <span>Embed Code</span>
+            <input type="button" id="copy" value="Copy" onClick="copy()"></input>
+          </div>
+            <textarea id="code">&lt;script src='formcrow.com/widget/formcrow.js'>&lt;/script>
+&lt;form-crow query="<%- query.query %>" prime_color="<%- query.color %>" uid="<%- query._id %>"/>&lt;/form-crow></textarea>
+        </div>
+        <div class="dashboard__form">
+          <form-crow query="<%- query.query %>" prime_color="<%- query.color %>" uid="<%- query._id %>"/></form-crow>
+        </div>
 
-      <form-crow query="<%- query.query %>" prime_color="<%- query.color %>" uid="<%- query._id %>"/></form-crow>
-
-      <a href="/dashboard/">Go Back</a>
-
-       <ul>
-        <% leads.forEach(function(lead) { %>
-          <li class="color">
-            <%= lead.submission %> | <%= lead.contact %>
-          </li>
-        <% }); %>
-      </ul>
-
+        <ul class="dashboard__submissions">
+          <% leads.forEach(function(lead) { %>
+            <li>
+              <%= lead.submission %> | <%= lead.contact %>
+            </li>
+          <% }); %>
+        </ul>
+      </div>
     </main>
 
     <footer>

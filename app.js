@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var schedule = require('node-schedule');
 
 //directly require the .env file (created for mLab MongoDB account)
 require('dotenv').config()
@@ -94,6 +95,14 @@ app.use(function(err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render('error');
+});
+
+///////////////////////////////////////////
+// Node-scheduler
+///////////////////////////////////////////
+var emailSchedule = require('./contexts/scheduler/email.js');
+var job = schedule.scheduleJob('* * * * *', function(){
+  emailSchedule.task()
 });
 
 module.exports = app;

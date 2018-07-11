@@ -1,11 +1,14 @@
-.nav
+header
   display: grid
-  grid-template-columns: 1fr 10fr 20fr 1fr
+  grid-template-columns: $blh 1fr $blh
+  background: white
+.nav
+  grid-column-start: 2
+  display: grid
+  grid-template-columns: 1fr 2fr
   height: $blh*2
   line-height: $blh*2
-  background: white
   &__logo
-    grid-column-start: 2
     text-decoration: none
     padding: 10px
     img, h1
@@ -16,7 +19,6 @@
       width: $blh
       padding: 5px
   &__list
-    grid-column-start: 3
     text-align: right
   li
     display: inline-block

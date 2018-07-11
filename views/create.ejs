@@ -12,15 +12,16 @@
 
     <main>
     <div class="create">
-      <h2>Create New Form Widget</h2>
       <div id="new-crow">
-        <h3>1. Ask customers your most important question</h3>
-          <input v-model="query" type="text" name="query" />
-        <h3>2. Pick a primary color scheme</h3>
-        <div>
+        <h2>Create New Form Widget</h2>
+        <button class="create__action" v-on:click="generateCrow">Generate a widget</button>
+        <h4>1. Ask customers your most important question</h4>
+          <div class="error">{{error}}</div>
+          <input class="create__input" v-model="query" type="text" name="query" autocomplete="off"/>
+        <h4>2. Pick a primary color scheme</h4>
+        <div class="create__picker">
           <sketch-picker v-model="colors" />
         </div>
-        <button v-on:click="generateCrow">Generate a widget</button>
       </div>
     </div>
     </main>
@@ -41,12 +42,16 @@
           return {
             colors,
             query: "",
-            user: "<%- userId %>"
+            user: "<%- userId %>",
+            error: ""
           }
         },
         methods: {
           generateCrow(){
-            console.log(this.userId)
+            if(!this.query){
+              this.error="Please fill in an awesome question!";
+              return
+            }
             let that = this
             fetch('http://localhost:3000/query', {
               method: 'post',

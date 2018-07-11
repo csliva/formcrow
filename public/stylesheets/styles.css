@@ -467,6 +467,21 @@ header {
 
 .create {
   grid-column-start: 2; }
+  .create__input {
+    width: 500px;
+    max-width: 100%;
+    margin: 14.5px auto;
+    height: 29px;
+    padding: 7.25px;
+    display: block; }
+  .create__action {
+    padding: 14.5px;
+    background-color: #626d68;
+    color: #fafafa;
+    text-decoration: none; }
+  .create__picker .vc-sketch {
+    display: block;
+    margin: 0 auto; }
 
 .fa {
   display: inline-block; }

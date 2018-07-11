@@ -129,13 +129,7 @@ code {
 .app {
   position: relative;
   min-height: 100vh;
-  background: #EEF3F2;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none; }
+  background: #EEF3F2; }
   .app__header {
     display: block; }
   .app__body {
@@ -446,7 +440,10 @@ header {
       padding: 7.25px;
       list-style: none;
       margin: 2.9px;
-      background-color: #fafafa; }
+      background-color: #fafafa;
+      width: 100%; }
+      .dashboard__submissions li:hover {
+        filter: brightness(1.5); }
   .dashboard__action {
     grid-column-start: 1;
     grid-column-end: 3;
@@ -456,6 +453,12 @@ header {
       background-color: #626d68;
       color: #fafafa;
       text-decoration: none; }
+
+.submission__link {
+  height: 100%;
+  width: 100%;
+  text-decoration: none;
+  display: block; }
 
 #copy {
   vertical-align: top;

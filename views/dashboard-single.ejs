@@ -48,7 +48,7 @@
         <ul class="dashboard__submissions">
           <% leads.forEach(function(lead) { %>
             <li>
-              <%= lead.submission %> | <%= lead.contact %>
+              <span><%= lead.submission %></span><span><%= lead.contact %></span>
             </li>
           <% }); %>
         </ul>

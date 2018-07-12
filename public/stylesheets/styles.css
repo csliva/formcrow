@@ -437,7 +437,6 @@ header {
     grid-column-end: 3;
     padding-left: 0; }
     .dashboard__submissions li {
-      padding: 7.25px;
       list-style: none;
       margin: 2.9px;
       background-color: #fafafa;
@@ -458,7 +457,8 @@ header {
   height: 100%;
   width: 100%;
   text-decoration: none;
-  display: block; }
+  display: block;
+  padding: 14.5px; }
 
 #copy {
   vertical-align: top;

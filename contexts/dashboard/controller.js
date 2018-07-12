@@ -7,6 +7,7 @@ exports.index = (req, res) => {
       if (err) return handleError(err);
       if (queries.length === 0) return res.render('create', { authed: true, userId: req.session.userId });
       //map out unrelated user information
+      
       return res.render('dashboard', { queries: queries, authed: true });
   });
 }

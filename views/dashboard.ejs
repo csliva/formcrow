@@ -18,7 +18,8 @@
         <ul class="dashboard__submissions">
           <% queries.forEach(function(entry) { %>
             <li style="border-left: 5px solid <%= entry.color %>">
-              <a class="submission__link" href="/dashboard/<%= entry._id %>"><span class="submission"><%= entry.query %></span></a>
+              
+              <a class="submission__link" href="/dashboard/<%= entry._id %>"><span class="submission"><%= entry.query %></span><span class="count"><%= entry.count %></span></a>
             </li>
           <% }); %>
         </ul>

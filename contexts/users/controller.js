@@ -23,11 +23,13 @@ exports.create = (req, res) => {
       return res.redirect("/users/signup");
     }
 
+    let subscriber = req.body.subscribed ? true : false
+
     // Create a User
       const user = new User({
         email: req.body.email,
         password: bcrypt.hashSync(req.body.password, 10),
-        subscribed: req.body.subscribed
+        subscribed: subscriber
       });
 
     // Save User in the database

@@ -10,6 +10,9 @@ const bcrypt = require('bcrypt');
 
 // Create and Save a new User
 exports.create = (req, res) => {
+    console.log('--------------');
+    console.log(req.body);
+    console.log('--------------');
     // Validate request
     if(!req.body.email) {
         req.session.flash = {"type": "error", "message": "Please enter an email"}
@@ -23,7 +26,8 @@ exports.create = (req, res) => {
     // Create a User
       const user = new User({
         email: req.body.email,
-        password: bcrypt.hashSync(req.body.password, 10)
+        password: bcrypt.hashSync(req.body.password, 10),
+        subscribed: req.body.subscribed
       });
 
     // Save User in the database

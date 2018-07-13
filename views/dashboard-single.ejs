@@ -29,32 +29,6 @@
     </script>
 
     <main>
-<<<<<<< HEAD
-    <%- JSON.stringify(query) %>
-      <button onClick="copy()">Copy</button>
-      <textarea id="code">
-        &lt;script src='formcrow.com/widget/formcrow.js'>&lt;/script>
-        &lt;form-crow query="<%- query.query %>" prime_color="<%- query.color %>" uid="<%- query._id %>"/>&lt;/form-crow>
-      </textarea>
-
-      <form-crow query="<%- query.query %>" prime_color="<%- query.color %>" uid="<%- query._id %>"/></form-crow>
-
-      <a href="/dashboard/">Go Back</a>
-
-       <ul>
-        <% leads.forEach(function(lead) { %>
-          <li class="color">
-            <%= lead.submission %> | <%= lead.contact %>
-          </li>
-        <% }); %>
-      </ul>
-
-
-      <div class="#">
-        <a href="/dashboard/csv/<%- query._id %>" class="button">Download CSV</a>
-      </div>
-
-=======
       <div class="dashboard">
         <div class="dashboard__action">
           <a href="/dashboard/">Dashboard →</a>
@@ -71,6 +45,11 @@
           <form-crow query="<%- query.query %>" prime_color="<%- query.color %>" uid="<%- query._id %>"/></form-crow>
         </div>
 
+        <div class="#">
+          <a href="/dashboard/csv/<%- query._id %>" class="button">Download CSV</a>
+        </div>
+
+
         <ul class="dashboard__submissions">
           <% leads.forEach(function(lead) { %>
             <li>
@@ -79,7 +58,6 @@
           <% }); %>
         </ul>
       </div>
->>>>>>> colt
     </main>
 
     <footer>

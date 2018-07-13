@@ -19,7 +19,8 @@ exports.create = (req, res) => {
     const query = new Query({
       query: req.body.query,
       user: req.body.user,
-      color: req.body.color.hex
+      color: req.body.color.hex,
+      count: 0
     });
     // Save Submission in the database
     query.save()

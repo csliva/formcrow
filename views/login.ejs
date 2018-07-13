@@ -8,18 +8,22 @@
       <% include partials/header %>
     </header>
 
-    <main class="user-form">
-      <h2>Login</h2>
-      <form action="/users/login" method="POST">
-        <label for="email">Email</label>
-        <input type="text" placeholder="user@mail.com" name="email" />
+    <main>
+      <div class="form">
+        <div class="user-form">
+            <h2>Login</h2>
+            <form action="/users/login" method="POST">
+              <label for="email">Email</label>
+              <input type="text" placeholder="user@mail.com" name="email" />
 
-        <label for="password">Password</label>
-        <input type="password" name="password" />
+              <label for="password">Password</label>
+              <input type="password" name="password" />
 
-        <button type="submit">Login</button>
-      </form>
-      <a href="/users/forgot">Forgot Password?</a>
+              <button type="submit">Login</button>
+            </form>
+            <a href="/users/forgot">Forgot Password?</a>
+          </div>
+        </div>
     </main>
 
     <footer>

@@ -65,8 +65,15 @@ export default {
       });
       //If form has been started without submission, submit before closing the page
       window.onbeforeunload = function() {
-        if(that.query_input){
-          that.submitFormCrow();
+        if(that.query_input && that.view_state != 3){
+          fetch('http://localhost:3000/lead', {
+            method: 'post',
+            headers: {
+            'Accept': 'application/json, text/plain, */*',
+            'Content-Type': 'application/json'
+          },
+            body: JSON.stringify({submission: that.query_input, contact: that.contact_input, ip: that.ip, formId: that.uid})
+          });
         }
         return;
       }
@@ -98,7 +105,6 @@ export default {
       }
     },
     submitFormCrow(){
-      this.contactValidation
       if(this.valid){
       let that = this
       fetch('http://localhost:3000/lead', {

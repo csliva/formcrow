@@ -1,0 +1,79 @@
+.dashboard
+  grid-column-start: 2
+  display: grid
+  grid-template-columns: 1fr 1fr
+  grid-column-gap: $blh
+  @media #{$media-max-sm}
+    grid-template-columns: 1fr
+    grid-template-rows: auto auto
+  #code
+    width: 500px
+    max-width: 100%
+    padding: $blh
+  &__code
+    width: 500px
+    max-width: 100%
+    margin: auto
+    grid-column-start: 1
+    @media #{$media-max-sm}
+      grid-row-start: 1
+  &__form
+    grid-column-start: 2
+    @media #{$media-max-sm}
+      grid-row-start: 2
+      grid-column-start: 1
+  &__submissions
+    grid-column-start: 1
+    grid-column-end: 3
+    padding-left: 0
+    li
+      list-style: none
+      margin: $blh * .1
+      background-color: #fafafa
+      width: 100%
+      &:hover
+        filter: brightness(1.5)
+  &__action
+    grid-column-start: 1
+    grid-column-end: 3
+    padding: $blh 0
+    a
+      padding: $blh * .5
+      background-color: #626d68
+      color: #fafafa
+      text-decoration: none
+
+.submission
+  &__link
+    height: 100%
+    width: 100%
+    text-decoration: none
+    display: block
+    padding: $blh*.5
+
+#copy
+  vertical-align: top
+  border-radius: 0
+  border: none
+  &:focus
+    border: none
+    outline: none
+
+.create
+  grid-column-start: 2
+  &__input
+    width: 500px
+    max-width: 100%
+    margin: $blh*.5 auto
+    height: $blh
+    padding: $blh*.25
+    display: block
+  &__action
+    padding: $blh * .5
+    background-color: #626d68
+    color: #fafafa
+    text-decoration: none
+  &__picker
+    .vc-sketch
+      display: block
+      margin: 0 auto

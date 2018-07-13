@@ -4,10 +4,10 @@ const Leads = require('../leads/model.js');
 exports.index = (req, res) => {
   Queries.
     find( {user: req.session.userId}, function (err, queries) {
-      console.log(queries)
       if (err) return handleError(err);
       if (queries.length === 0) return res.render('create', { authed: true, userId: req.session.userId });
       //map out unrelated user information
+      
       return res.render('dashboard', { queries: queries, authed: true });
   });
 }
@@ -38,7 +38,6 @@ exports.csv = (req, res) => {
       //map out unrelated user information
       Leads.find({formId: query._id}, function(err, leads){
         const csv = json2csv(leads, opts);
-        console.log(csv);
         return res.send(new Buffer(csv));
         // return res.render('dashboard-single', { query: query, leads: leads, authed: true });
       })

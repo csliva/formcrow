@@ -1,4 +1,5 @@
 const Lead = require('./model.js');
+const Query = require('../queries/model.js');
 
 //Need help??
 // https://www.callicoder.com/node-js-express-mongodb-restful-crud-api-tutorial/
@@ -22,6 +23,9 @@ exports.create = (req, res) => {
         ip: req.body.ip,
         formId: req.body.formId
       });
+
+    //Add a new number to leadcount
+    Query.findOneAndUpdate({_id :req.body.formId}, {$inc : {'count' : 1}}).exec();
 
     // Save Submission in the database
     lead.save()

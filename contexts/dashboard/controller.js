@@ -1,5 +1,6 @@
 const Queries = require('../queries/model.js');
 const Leads = require('../leads/model.js');
+const User = require('../users/model.js');
 
 exports.index = (req, res) => {
   Queries.
@@ -7,7 +8,7 @@ exports.index = (req, res) => {
       if (err) return handleError(err);
       if (queries.length === 0) return res.render('create', { authed: true, userId: req.session.userId });
       //map out unrelated user information
-      
+
       return res.render('dashboard', { queries: queries, authed: true });
   });
 }
@@ -32,14 +33,23 @@ const fields = ['submission', 'contact', 'ip'];
 const opts = { fields };
 
 exports.csv = (req, res) => {
-  Queries.
-  findById(req.params.postId, function (err, query) {
-    if (err) return handleError(err);
-      //map out unrelated user information
-      Leads.find({formId: query._id}, function(err, leads){
-        const csv = json2csv(leads, opts);
-        return res.send(new Buffer(csv));
-        // return res.render('dashboard-single', { query: query, leads: leads, authed: true });
-      })
-  } );
+
+  if (!req.session.userSubed){
+    req.session.flash = {"type": "error", "message": "This is a premium feature. Support form crow and get premium?"}
+    return res.redirect(req.get('referer'));
+  } else {
+    Queries.
+    findById(req.params.postId, function (err, query) {
+      if (err) return handleError(err);
+        // csv stuff
+        Leads.find({formId: query._id}, function(err, leads){
+          const csv = json2csv(leads, opts);
+          var title = query.query.replace(/[^a-zA-Z0-9_-]/g,'_');
+          res.attachment(title+'.csv');
+          return res.send(new Buffer(csv));
+          // return res.render('dashboard-single', { query: query, leads: leads, authed: true });
+        })
+    } );
+  }
+
 }

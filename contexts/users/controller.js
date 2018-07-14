@@ -58,6 +58,7 @@ exports.authenticate = (req, res) => {
           return res.redirect("/users/login");
         }
         req.session.userId = user._id
+        req.session.userSubed = user.subscribed
         return res.redirect('/dashboard');
 
     }).catch(err => {

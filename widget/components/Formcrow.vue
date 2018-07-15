@@ -65,7 +65,7 @@ export default {
       });
       //If form has been started without submission, submit before closing the page
       window.onbeforeunload = function() {
-        if(that.query_input && that.view_state != 3){
+        if(that.query_input && that.view_state != 3 && that.honey == false){
           fetch('http://localhost:3000/lead', {
             method: 'post',
             headers: {
@@ -105,7 +105,7 @@ export default {
       }
     },
     submitFormCrow(){
-      if(this.valid){
+      if(this.valid && !this.honey){
       let that = this
       fetch('http://localhost:3000/lead', {
         method: 'post',

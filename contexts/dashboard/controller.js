@@ -1,6 +1,7 @@
 const Queries = require('../queries/model.js');
 const Leads = require('../leads/model.js');
 const User = require('../users/model.js');
+const moment = require('moment')
 
 exports.index = (req, res) => {
   Queries.
@@ -9,7 +10,7 @@ exports.index = (req, res) => {
       if (queries.length === 0) return res.render('create', { authed: true, userId: req.session.userId });
       //map out unrelated user information
 
-      return res.render('dashboard', { queries: queries, authed: true });
+      return res.render('dashboard', {moment: moment, queries: queries, authed: true });
   });
 }
 
@@ -22,8 +23,8 @@ exports.single = (req, res) => {
   findById(req.params.postId, function (err, query) {
     if (err) return handleError(err);
       //map out unrelated user information
-      Leads.find({formId: query._id}, function(err, leads){
-        return res.render('dashboard-single', { query: query, leads: leads, authed: true });
+      Leads.find({formId: query._id}, null, {sort: {createdAt: -1}}, function(err, leads){
+        return res.render('dashboard-single', {moment: moment, query: query, leads: leads, authed: true });
       })
   } );
 }

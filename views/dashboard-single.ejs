@@ -49,10 +49,20 @@
           <a href="/dashboard/csv/<%- query._id %>" class="button">Download CSV</a>
         </div>
 
+        <div class="dash__headers">
+          <span class="submission__c1">Answers</span>
+          <span class="submission__c2">Contact</span>
+          <span class="submission__c3">Location (premium only)</span>
+          <span class="submission__c4">Submitted At</span>
+        </div>
+
         <ul class="dashboard__submissions">
           <% leads.forEach(function(lead) { %>
-            <li>
-              <span><%= lead.submission %></span><span><%= lead.contact %></span>
+            <li class="submission_r">
+              <span class="submission__c1"><%= lead.submission %></span>
+              <span class="submission__c2"><%= lead.contact %></span>
+              <span class="submission__c3"></span>
+              <span class="submission__c4 dash__date"><%= moment(lead.createdAt).format("MMM, Do h:mm a"); %></span>
             </li>
           <% }); %>
         </ul>

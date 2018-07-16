@@ -486,5 +486,23 @@ header {
     display: block;
     margin: 0 auto; }
 
+.dash__headers, .submission__link, .submission_r {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-gap: 29px; }
+  .dash__headers__c1, .submission__link__c1, .submission_r__c1 {
+    grid-column: 1; }
+  .dash__headers__c2, .submission__link__c2, .submission_r__c2 {
+    grid-column: 2; }
+  .dash__headers__c3, .submission__link__c3, .submission_r__c3 {
+    grid-column: 3; }
+  .dash__headers__c4, .submission__link__c4, .submission_r__c4 {
+    grid-column: 4; }
+
+.dash__date {
+  font-size: 12px; }
+
 .fa {
   display: inline-block; }

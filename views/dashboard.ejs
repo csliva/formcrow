@@ -16,10 +16,19 @@
         </div>
 
         <ul class="dashboard__submissions">
+          <div class="dash__headers">
+            <span class="submission__c1">The Question</span>
+            <span class="submission__c2">Submission Count</span>
+            <span class="submission__c3">Last Submission at</span>
+          </div>
           <% queries.forEach(function(entry) { %>
             <li style="border-left: 5px solid <%= entry.color %>">
-              
-              <a class="submission__link" href="/dashboard/<%= entry._id %>"><span class="submission"><%= entry.query %></span><span class="count"><%= entry.count %></span></a>
+
+              <a class="submission__link" href="/dashboard/<%= entry._id %>">
+                <span class="submission__c1"><%= entry.query %></span>
+                <span class="submission__c2"><%= entry.count %></span>
+                <span class="submission__c3"><%= moment(entry.updatedAt).format("MMM, Do h:mm a"); %></span>
+              </a>
             </li>
           <% }); %>
         </ul>

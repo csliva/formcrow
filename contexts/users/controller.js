@@ -37,6 +37,7 @@ exports.create = (req, res) => {
     .then(data => {
       //store new session and send to dashboard
       req.session.userId = user._id
+      req.session.userSubbed = user.subscribed
       req.session.flash = {"type": "success", "message": "Welcome to Form Crow! Thanks for signing up!"}
       return res.redirect("/dashboard");
     }).catch(err => {
@@ -58,7 +59,7 @@ exports.authenticate = (req, res) => {
           return res.redirect("/users/login");
         }
         req.session.userId = user._id
-        req.session.userSubed = user.subscribed
+        req.session.userSubbed = user.subscribed
         return res.redirect('/dashboard');
 
     }).catch(err => {

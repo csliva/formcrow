@@ -19,13 +19,11 @@ exports.create = (req, res) => {
 
 exports.single = (req, res) => {
   Queries.
-  findById(req.params.postId, function (err, query) {
-    if (err) return handleError(err);
-      //map out unrelated user information
-      Leads.find({formId: query._id}, function(err, leads){
-        return res.render('dashboard-single', { query: query, leads: leads, authed: true });
-      })
-  } );
+  findById(req.params.postId).then(query => {
+    Leads.find({formId: query._id}, function(err, leads){
+      return res.render('dashboard-single', { query: query, leads: leads, authed: true });
+    })
+  });
 }
 
 const json2csv = require('json2csv').parse;

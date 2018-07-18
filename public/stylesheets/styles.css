@@ -169,12 +169,20 @@ code {
 main {
   display: grid;
   grid-template-columns: 29px 1fr 29px;
-  padding-bottom: 58px; }
+  padding-bottom: 87px; }
 
 footer {
-  display: block;
+  display: flex;
   position: absolute;
-  bottom: 0; }
+  bottom: 0;
+  height: 58px;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  width: 100%;
+  background: #ffffff69; }
+  footer span {
+    padding: 0 29px; }
 
 code {
   -webkit-touch-callout: text;

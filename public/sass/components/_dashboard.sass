@@ -4,7 +4,7 @@
   grid-template-columns: 1fr 1fr
   grid-column-gap: $blh
   @media #{$media-max-sm}
-    grid-template-columns: 1fr
+    grid-template-columns: calc(100vw - 58px)
     grid-template-rows: auto auto
   #code
     width: 500px
@@ -32,7 +32,7 @@
       background-color: #fafafa
       width: 100%
       &:hover
-        filter: brightness(1.5)
+        background: #ffffffcc
   &__action
     grid-column-start: 1
     grid-column-end: 3
@@ -95,3 +95,8 @@
 
 .dash__date
   font-size: 12px
+.dash__headers
+  background: #0000001f
+  padding-left: $blh
+  span
+    padding: $blh*.5 0

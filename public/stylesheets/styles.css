@@ -412,7 +412,7 @@ header {
   grid-column-gap: 29px; }
   @media screen and (max-width: 767px) {
     .dashboard {
-      grid-template-columns: 1fr;
+      grid-template-columns: calc(100vw - 58px);
       grid-template-rows: auto auto; } }
   .dashboard #code {
     width: 500px;
@@ -442,7 +442,7 @@ header {
       background-color: #fafafa;
       width: 100%; }
       .dashboard__submissions li:hover {
-        filter: brightness(1.5); }
+        background: #ffffffcc; }
   .dashboard__action {
     grid-column-start: 1;
     grid-column-end: 3;
@@ -503,6 +503,12 @@ header {
 
 .dash__date {
   font-size: 12px; }
+
+.dash__headers {
+  background: #0000001f;
+  padding-left: 29px; }
+  .dash__headers span {
+    padding: 14.5px 0; }
 
 .fa {
   display: inline-block; }

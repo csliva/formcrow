@@ -486,5 +486,33 @@ header {
     display: block;
     margin: 0 auto; }
 
+.guide {
+  display: grid;
+  grid-template-columns: 300px minmax(200px, 600px) auto;
+  grid-template-rows: 300px 300px auto;
+  grid-gap: 29px;
+  grid-column-start: 2;
+  margin-top: 29px; }
+  .guide__title {
+    grid-column-start: 1;
+    padding: 29px;
+    text-align: right;
+    background: white;
+    color: #444444; }
+  .guide__subtitle {
+    grid-column-start: 1;
+    grid-row-start: 2;
+    padding: 29px;
+    text-align: left;
+    background: #00000014; }
+  .guide__content {
+    grid-row-start: 1;
+    grid-row-end: 4;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    color: #444444;
+    padding: 29px;
+    background: #ffffff5e; }
+
 .fa {
   display: inline-block; }

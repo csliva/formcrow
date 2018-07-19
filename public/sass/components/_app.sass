@@ -48,12 +48,20 @@
 main
   display: grid
   grid-template-columns: $blh 1fr $blh
-  padding-bottom: $blh * 2
+  padding-bottom: $blh * 3
 
 footer
-  display: block
+  display: flex
   position: absolute
   bottom: 0
+  height: $blh * 2
+  justify-content: center
+  align-content: center
+  align-items: center
+  width: 100%
+  background: #ffffff69
+  span
+    padding: 0 $blh
 
 code
   +selecttext()

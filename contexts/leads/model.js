@@ -4,6 +4,7 @@ const LeadSchema = mongoose.Schema({
     submission: String,
     contact: String,
     ip: String,
+    location: String,
     formId: { type: mongoose.Schema.Types.ObjectId, ref: 'Query', index: true }
   }, {
     timestamps: true

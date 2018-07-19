@@ -20,13 +20,11 @@ exports.create = (req, res) => {
 
 exports.single = (req, res) => {
   Queries.
-  findById(req.params.postId, function (err, query) {
-    if (err) return handleError(err);
-      //map out unrelated user information
+  findById(req.params.postId).then(query => {
       Leads.find({formId: query._id}, null, {sort: {createdAt: -1}}, function(err, leads){
-        return res.render('dashboard-single', {moment: moment, query: query, leads: leads, authed: true });
+        return res.render('dashboard-single', {moment: moment, query: query, leads: leads, authed: true, subscribed: req.session.userSubbed});
       })
-  } );
+  })
 }
 
 const json2csv = require('json2csv').parse;

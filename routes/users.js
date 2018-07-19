@@ -10,7 +10,7 @@ router.post('/', function(req, res, next) {
 /* Login -- sends data to /auth */
 router.get('/login', function(req, res, next) {
   if(!req.session.userId){
-    res.render('login', {authed: false});
+    res.render('login', {authed: false, subscribed: false});
   } else { return res.redirect('/dashboard'); }
 });
 
@@ -23,7 +23,7 @@ router.post('/login', function(req, res, next) {
 /* Sign up -- render form */
 router.get('/signup', function(req, res, next) {
   if(!req.session.userId){
-    res.render('signup', {authed: false, sessionFlash: res.locals.sessionFlash});
+    res.render('signup', {authed: false, subscribed: true, sessionFlash: res.locals.sessionFlash});
   } else { return res.redirect('/dashboard'); }
 });
 /* Sign up -- post data */

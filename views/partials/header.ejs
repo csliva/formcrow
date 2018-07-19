@@ -4,6 +4,9 @@
     <h1>Form Crow</h1>
   </a>
   <ul class="nav__list">
+    <% if (!subscribed) { %>
+      <li><a href="/upgrade">Upgrade</a></li>
+    <% } %>
     <% if (authed) { %>
     <li><a href="/users/logout">Log out</a></li>
     <% } else { %>

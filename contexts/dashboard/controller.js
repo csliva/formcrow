@@ -4,25 +4,28 @@ const User = require('../users/model.js');
 const moment = require('moment')
 
 exports.index = (req, res) => {
+  var subscribed = req.session.userSubbed ? true : false;
   Queries.
     find( {user: req.session.userId}, function (err, queries) {
       if (err) return handleError(err);
-      if (queries.length === 0) return res.render('create', { authed: true, userId: req.session.userId });
+      if (queries.length === 0) return res.render('create', { authed: true, userId: req.session.userId, subscribed: subscribed });
       //map out unrelated user information
 
-      return res.render('dashboard', {moment: moment, queries: queries, authed: true });
+      return res.render('dashboard', {moment: moment, queries: queries, authed: true, subscribed: subscribed  });
   });
 }
 
 exports.create = (req, res) => {
-  return res.render('create', { authed: true, userId: req.session.userId });
+  var subscribed = req.session.userSubbed ? true : false;
+  return res.render('create', { authed: true, userId: req.session.userId, subscribed: subscribed });
 }
 
 exports.single = (req, res) => {
+  var subscribed = req.session.userSubbed ? true : false;
   Queries.
   findById(req.params.postId).then(query => {
       Leads.find({formId: query._id}, null, {sort: {createdAt: -1}}, function(err, leads){
-        return res.render('dashboard-single', {moment: moment, query: query, leads: leads, authed: true, subscribed: req.session.userSubbed});
+        return res.render('dashboard-single', {moment: moment, query: query, leads: leads, authed: true, subscribed: subscribed});
       })
   })
 }

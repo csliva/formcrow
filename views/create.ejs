@@ -14,13 +14,19 @@
     <div class="create">
       <div id="new-crow">
         <h2>Create New Form Widget</h2>
-        <button class="create__action" v-on:click="generateCrow">Generate a widget</button>
-        <h4>1. Ask customers your most important question</h4>
-          <div class="error">{{error}}</div>
-          <input class="create__input" v-model="query" type="text" name="query" autocomplete="off"/>
-        <h4>2. Pick a primary color scheme</h4>
-        <div class="create__picker">
-          <sketch-picker v-model="colors" />
+        <div class="error">{{error}}</div>
+        <div class="create__grid">
+          <div class="create__1">
+            <h4>1. Ask customers your most important question</h4>
+            <input class="create__input" v-model="query" type="text" name="query" autocomplete="off"/>
+          </div>
+          <div class="create__2">
+            <h4>2. Pick a primary color scheme</h4>
+            <div class="create__picker">
+              <sketch-picker v-model="colors" />
+            </div>
+          </div>
+          <button class="create__action" v-on:click="generateCrow">Generate a widget</button>
         </div>
       </div>
     </div>

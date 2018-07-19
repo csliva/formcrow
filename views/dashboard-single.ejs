@@ -58,11 +58,11 @@
 
         <ul class="dashboard__submissions">
           <% leads.forEach(function(lead) { %>
-            <li class="submission_r">
-              <span class="submission__c1"><%= lead.submission %></span>
-              <span class="submission__c2"><%= lead.contact %></span>
-              <span class="submission__c3"></span>
-              <span class="submission__c4 dash__date"><%= moment(lead.createdAt).format("MMM, Do h:mm a"); %></span>
+            <li class="submission__single">
+              <span class="submission__single--1"><%= lead.submission %></span>
+              <span class="submission__single--2"><%= lead.contact %></span>
+              <span class="submission__single--3"></span>
+              <span class="submission__single--4 dash__date"><%= moment(lead.createdAt).format("MMM, Do h:mm a"); %></span>
             </li>
           <% }); %>
         </ul>

@@ -405,6 +405,19 @@ header {
     padding: 14.5px 29px;
     margin: 14.5px 0px; }
 
+.create__grid {
+  display: grid;
+  grid-template-columns: minmax(100px, auto) minmax(100px, auto) 150px;
+  grid-column-gap: 29px; }
+  @media screen and (max-width: 767px) {
+    .create__grid {
+      grid-template-columns: calc(100vw - 58px);
+      grid-gap: 0px; } }
+
+.create__action {
+  height: 58px;
+  padding: 29px; }
+
 .dashboard {
   grid-column-start: 2;
   display: grid;
@@ -486,20 +499,25 @@ header {
     display: block;
     margin: 0 auto; }
 
-.dash__headers, .submission__link, .submission_r {
+.dash__headers, .submission__link, .submission__single {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr 1fr;
   grid-column-start: 1;
   grid-column-end: 3;
   grid-gap: 29px; }
-  .dash__headers__c1, .submission__link__c1, .submission_r__c1 {
-    grid-column: 1; }
-  .dash__headers__c2, .submission__link__c2, .submission_r__c2 {
-    grid-column: 2; }
-  .dash__headers__c3, .submission__link__c3, .submission_r__c3 {
-    grid-column: 3; }
-  .dash__headers__c4, .submission__link__c4, .submission_r__c4 {
-    grid-column: 4; }
+  @media screen and (max-width: 767px) {
+    .dash__headers, .submission__link, .submission__single {
+      grid-template-columns: 1fr;
+      grid-gap: 0px; } }
+
+@media screen and (max-width: 767px) {
+  .submission__link--1:before {
+    content: "Query: ";
+    color: black; }
+  .submission__link--2:after {
+    content: " leads"; }
+  .submission__link--3:before {
+    content: "Last submission on "; } }
 
 .dash__date {
   font-size: 12px; }
@@ -507,6 +525,9 @@ header {
 .dash__headers {
   background: #0000001f;
   padding-left: 29px; }
+  @media screen and (max-width: 767px) {
+    .dash__headers {
+      display: none; } }
   .dash__headers span {
     padding: 14.5px 0; }
 

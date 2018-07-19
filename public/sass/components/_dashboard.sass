@@ -78,25 +78,37 @@
       display: block
       margin: 0 auto
 
-.dash__headers, .submission__link, .submission_r
+.dash__headers, .submission__link, .submission__single
   display: grid
   grid-template-columns: 2fr 1fr 1fr 1fr
   grid-column-start: 1
   grid-column-end: 3
   grid-gap: $blh
-  &__c1
-    grid-column: 1
-  &__c2
-    grid-column: 2
-  &__c3
-    grid-column: 3
-  &__c4
-    grid-column: 4
+  @media #{$media-max-sm}
+    grid-template-columns: 1fr
+    grid-gap: 0px
+
+
+.submission
+  @media #{$media-max-sm}
+    &__link
+      &--1
+        &:before
+          content: "Query: "
+          color: black
+      &--2
+        &:after
+          content: " leads"
+      &--3
+        &:before
+          content: "Last submission on "
 
 .dash__date
   font-size: 12px
 .dash__headers
   background: #0000001f
   padding-left: $blh
+  @media #{$media-max-sm}
+    display: none
   span
     padding: $blh*.5 0

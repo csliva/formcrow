@@ -25,3 +25,16 @@
     border: none
     padding: $blh*.5 $blh
     margin: $blh*.5 0px
+
+.create
+  &__grid
+    display: grid
+    grid-template-columns: minmax(100px, auto) minmax(100px, auto) 150px
+    grid-column-gap: $blh
+    @media #{$media-max-sm}
+      grid-template-columns: calc(100vw - 58px)
+      grid-gap: 0px
+
+  &__action
+    height: $blh * 2
+    padding: $blh

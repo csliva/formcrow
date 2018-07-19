@@ -26,7 +26,7 @@
               <sketch-picker v-model="colors" />
             </div>
           </div>
-          <button class="create__action" v-on:click="generateCrow">Generate a widget</button>
+          <button v-bind:style="{ background: colors.hex }" class="create__3 create__action" v-on:click="generateCrow">Generate New Form</button>
         </div>
       </div>
     </div>

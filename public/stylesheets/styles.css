@@ -159,12 +159,16 @@ code {
   font-family: "Roboto", sans-serif;
   grid-column-start: 1;
   grid-column-end: 4; }
+  .error p {
+    height: 0; }
 
 .success {
   background: #39535d;
   color: white;
   text-align: center;
   font-family: "Roboto", sans-serif; }
+  .success p {
+    height: 0; }
 
 main {
   display: grid;
@@ -413,6 +417,59 @@ header {
     padding: 14.5px 29px;
     margin: 14.5px 0px; }
 
+.create {
+  margin-top: 29px;
+  grid-column-start: 2; }
+  .create__grid {
+    display: grid;
+    grid-template-columns: minmax(100px, auto) minmax(100px, auto);
+    grid-template-rows: 200px auto;
+    grid-column-gap: 29px; }
+    @media screen and (max-width: 767px) {
+      .create__grid {
+        grid-template-columns: calc(100vw - 58px);
+        grid-template-rows: 1fr 2fr 1fr;
+        grid-gap: 0px; } }
+  .create__input {
+    width: 500px;
+    max-width: 100%;
+    margin: 14.5px auto;
+    height: 29px;
+    padding: 7.25px;
+    display: block; }
+  .create__action {
+    padding: 14.5px;
+    background-color: #626d68;
+    color: #fafafa;
+    text-decoration: none;
+    height: 58px;
+    font-weight: bold; }
+  .create__picker .vc-sketch {
+    display: block;
+    margin: 0 auto; }
+  .create__1 {
+    grid-row: 1;
+    grid-column: 1;
+    background: white;
+    padding: 29px;
+    height: 200px; }
+  .create__2 {
+    grid-column: 2;
+    grid-row-start: 1;
+    grid-row-end: 3;
+    background: white;
+    padding: 29px; }
+    @media screen and (max-width: 767px) {
+      .create__2 {
+        grid-column: 1;
+        grid-row: 2; } }
+  .create__3 {
+    grid-row: 2; }
+    @media screen and (max-width: 767px) {
+      .create__3 {
+        grid-column: 1;
+        grid-row: 3; } }
+
 .dashboard {
   grid-column-start: 2;
   display: grid;
@@ -420,7 +477,7 @@ header {
   grid-column-gap: 29px; }
   @media screen and (max-width: 767px) {
     .dashboard {
-      grid-template-columns: 1fr;
+      grid-template-columns: calc(100vw - 58px);
       grid-template-rows: auto auto; } }
   .dashboard #code {
     width: 500px;
@@ -450,7 +507,7 @@ header {
       background-color: #fafafa;
       width: 100%; }
       .dashboard__submissions li:hover {
-        filter: brightness(1.5); }
+        background: #ffffffcc; }
   .dashboard__action {
     grid-column-start: 1;
     grid-column-end: 3;
@@ -476,23 +533,65 @@ header {
     border: none;
     outline: none; }
 
-.create {
-  grid-column-start: 2; }
-  .create__input {
-    width: 500px;
-    max-width: 100%;
-    margin: 14.5px auto;
-    height: 29px;
-    padding: 7.25px;
-    display: block; }
-  .create__action {
-    padding: 14.5px;
-    background-color: #626d68;
-    color: #fafafa;
-    text-decoration: none; }
-  .create__picker .vc-sketch {
-    display: block;
-    margin: 0 auto; }
+.dash__headers, .submission__link, .submission__single {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-gap: 29px; }
+  @media screen and (max-width: 767px) {
+    .dash__headers, .submission__link, .submission__single {
+      grid-template-columns: 1fr;
+      grid-gap: 0px; } }
+
+@media screen and (max-width: 767px) {
+  .submission__link--1:before {
+    content: "Query: ";
+    color: black; }
+  .submission__link--2:after {
+    content: " leads"; }
+  .submission__link--3:before {
+    content: "Last submission on "; } }
+
+.dash__date {
+  font-size: 12px; }
+
+.dash__headers {
+  background: #0000001f;
+  padding-left: 29px; }
+  @media screen and (max-width: 767px) {
+    .dash__headers {
+      display: none; } }
+  .dash__headers span {
+    padding: 14.5px 0; }
+
+.guide {
+  display: grid;
+  grid-template-columns: 300px minmax(200px, 600px) auto;
+  grid-template-rows: 300px 300px auto;
+  grid-gap: 29px;
+  grid-column-start: 2;
+  margin-top: 29px; }
+  .guide__title {
+    grid-column-start: 1;
+    padding: 29px;
+    text-align: right;
+    background: white;
+    color: #444444; }
+  .guide__subtitle {
+    grid-column-start: 1;
+    grid-row-start: 2;
+    padding: 29px;
+    text-align: left;
+    background: #00000014; }
+  .guide__content {
+    grid-row-start: 1;
+    grid-row-end: 4;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    color: #444444;
+    padding: 29px;
+    background: #ffffff5e; }
 
 .fa {
   display: inline-block; }

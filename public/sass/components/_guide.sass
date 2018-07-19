@@ -1,0 +1,27 @@
+.guide
+  display: grid
+  grid-template-columns: 300px minmax(200px, 600px) auto
+  grid-template-rows: 300px 300px auto
+  grid-gap: $blh
+  grid-column-start: 2
+  margin-top: $blh
+  &__title
+    grid-column-start: 1
+    padding: $blh
+    text-align: right
+    background: white
+    color: #444444
+  &__subtitle
+    grid-column-start: 1
+    grid-row-start: 2
+    padding: $blh
+    text-align: left
+    background: #00000014
+  &__content
+    grid-row-start: 1
+    grid-row-end: 4
+    grid-column-start: 2
+    grid-column-end: 3
+    color: #444444
+    padding: $blh
+    background: #ffffff5e

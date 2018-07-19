@@ -61,7 +61,7 @@
             <li class="submission__single">
               <span class="submission__single--1"><%= lead.submission %></span>
               <span class="submission__single--2"><%= lead.contact %></span>
-              <span class="submission__single--3"></span>
+              <span class="submission__single--3"><%= lead.location %></span>
               <span class="submission__single--4 dash__date"><%= moment(lead.createdAt).format("MMM, Do h:mm a"); %></span>
             </li>
           <% }); %>

@@ -10,4 +10,10 @@ router.get('/', function(req, res, next) {
   }
 });
 
+/* GET home page. */
+router.get('/contact-us', function(req, res, next) {
+  let authed = req.session.userId ? true : false
+  res.render('contact', { authed: authed});
+});
+
 module.exports = router;

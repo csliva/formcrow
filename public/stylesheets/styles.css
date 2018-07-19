@@ -196,6 +196,9 @@ code {
   -ms-user-select: text;
   user-select: text; }
 
+.content {
+  grid-column: 2; }
+
 header {
   display: grid;
   grid-template-columns: 29px 1fr 29px;

@@ -1,0 +1,28 @@
+<form action="/users/settings" method="POST" class="settings__form">
+  <fieldset>
+    <label for="rate">Plan: Pro</label>
+  </fieldset>
+  <fieldset>
+    <label for="rate">Mail Rates</label>
+    <select name="rate" id="rate">
+      <option value="single" <% if(user.rate == "single") { %>selected<% } %> >Per Lead</option>
+      <option value="hourly" <% if(user.rate == "hourly") { %>selected<% } %> >Hourly</option>
+      <option value="daily" <% if(user.rate == "daily") { %>selected<% } %> >Daily</option>
+      <option value="none"<% if(user.rate == "none") { %>selected<% } %> >None</option>
+    </select>
+  </fieldset>
+  <fieldset>
+    <label for="email">Mail to</label>
+    <input name="mailto" id="mailto" type="email" value="<%= user.mailto %>"/>
+  </fieldset>
+  <fieldset>
+    <label for="partial">Collect Partial or Adandoned Forms</label>
+    <input type="checkbox" id="partial" name="partial" value="true" <% if(user.partial) { %>checked<% } %> />
+  </fieldset>
+  <fieldset>
+    <label for="subscriber">Currently, we have no way to sign pros up. So just check the box to get access to pro for free.</label>
+    <input type="checkbox" id="subscribed" name="subscribed" value="true" <% if(subscribed) { %>checked<% } %> />
+  </fieldset>
+  <button type="submit" class="settings__submit">Save</button>
+</form>
+<a href="Unsubscribe from Pro">Unsubscribe from Pro</a>

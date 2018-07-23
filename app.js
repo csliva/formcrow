@@ -103,8 +103,12 @@ app.use(function(err, req, res, next) {
 // Node-scheduler
 ///////////////////////////////////////////
 var emailSchedule = require('./contexts/scheduler/email.js');
-var job = schedule.scheduleJob('0 0 * * *', function(){
-  emailSchedule.task()
+var daily = schedule.scheduleJob('0 0 * * *', function(){
+  emailSchedule.daily()
 });
+var hourly = schedule.scheduleJob('0 * * * *', function(){
+  emailSchedule.hourly()
+});
+
 
 module.exports = app;

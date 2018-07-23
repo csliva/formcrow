@@ -10,9 +10,6 @@ const bcrypt = require('bcrypt');
 
 // Create and Save a new User
 exports.create = (req, res) => {
-    console.log('--------------');
-    console.log(req.body);
-    console.log('--------------');
     // Validate request
     if(!req.body.email) {
         req.session.flash = {"type": "error", "message": "Please enter an email"}
@@ -29,7 +26,10 @@ exports.create = (req, res) => {
       const user = new User({
         email: req.body.email,
         password: bcrypt.hashSync(req.body.password, 10),
-        subscribed: subscriber
+        subscribed: subscriber,
+        mailto: req.body.email,
+        partial: false,
+        rate: "daily"
       });
 
     // Save User in the database
@@ -84,4 +84,33 @@ exports.logout = (req, res) => {
       }
     });
   }
+}
+
+// GET settings
+exports.getSettings = (req, res) => {
+  //ensure logged in
+  if (req.session.userId){
+    User.findById(req.session.userId).then(user => {
+      let subscribed = user.subscribed
+      return res.render('settings', { authed: true, user: user, subscribed: subscribed });
+    })
+  } else {
+    return res.redirect('/');
+  }
+}
+
+// SET settings
+exports.setSettings = (req, res) => {
+  //ensure logged in
+  User.findById(req.session.userId).then(user => {
+    //set user.partial to false if not set
+    req.body.partial = req.body.partial ? true : false
+    req.body.subscribed = req.body.subscribed ? true : false
+    user.set({...req.body, ...user.rate, ...user.mailto, ...user.partial, ...user.subscribed})
+    user.save(function (err, updatedUser) {
+      if (err) return send("500 server error");
+      req.session.flash = {"type": "success", "message": "Update Successful"}
+      return res.redirect("/users/settings");
+    });
+  });
 }

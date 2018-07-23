@@ -16,9 +16,9 @@ const ejs = require('ejs');
 ////////////////////////////////
 // Queries
 ////////////////////////////////
-exports.task = (req, res) => {
+exports.daily = (req, res) => {
   //get all users
-  var userlist = User.find().then(users => {
+  var userlist = User.find({"rate": "daily"}).then(users => {
     //for each user
     users.map(user => {
       //get all queries
@@ -40,18 +40,53 @@ exports.task = (req, res) => {
               }
             })
             //send all leads created in last 24 hours
-            if(lead_list.length > 0){ sendMail(user.email, query.query, lead_list) }
+            if(lead_list.length > 0){ module.exports.sendMail(user.mailto, query.query, lead_list) }
           })
         })
       })
     })
   });
 }
+
+
+
+exports.hourly = (req, res) => {
+  //get all users
+  var userlist = User.find({"rate": "hourly"}).then(users => {
+    //for each user
+    users.map(user => {
+      //get all queries
+      Query.find({"user": user._id}).then(queries => {
+        //for each query
+        queries.map(query => {
+          //get all leads
+          Lead.find({formId: query._id}).then(leads => {
+            //create an empty lead list. If lead needs to be emailed, push in
+            let lead_list = []
+            //for each lead
+            leads.map(lead => {
+              //convert date times to unix epoch
+              let createdAt = moment(lead.createdAt).unix()
+              let now = moment().unix()
+              //if number of seconds is less than 24 hours
+              if(now - createdAt < 3600){
+                lead_list.push(lead)
+              }
+            })
+            //send all leads created in last 24 hours
+            if(lead_list.length > 0){ module.exports.sendMail(user.mailto, query.query, lead_list) }
+          })
+        })
+      })
+    })
+  });
+}
+
 ////////////////////////////
 // Send mail function -- create transport and
 ////////////////////////////
 //Expects user email and lead array
-let sendMail = function(target_email, question, lead_list){
+exports.sendMail = function(target_email, question, lead_list){
   let transporter = nodemailer.createTransport({
       host: 'smtp.gmail.com',
       port: 465,

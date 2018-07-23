@@ -36,4 +36,14 @@ router.get('/logout', function(req, res, next) {
   controller.logout(req, res)
 });
 
+/* Settings page -- Get and Set */
+router.get('/settings', function(req, res, next){
+  controller.getSettings(req, res)
+});
+
+/* Settings page -- Get and Set */
+router.post('/settings', function(req, res, next){
+  controller.setSettings(req, res)
+});
+
 module.exports = router;

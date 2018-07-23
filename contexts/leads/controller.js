@@ -2,6 +2,7 @@ const Lead = require('./model.js');
 const Query = require('../queries/model.js');
 const User = require('../users/model.js');
 const axios = require('axios');
+const Mail = require('../scheduler/email.js')
 
 //1. Get related query and increment lead count
 //2. Get related user to query
@@ -13,7 +14,7 @@ exports.create = (req, res) => {
   Query.findOne({_id :req.body.formId}).then(query => {
     //2
     User.findById(query.user).then(user => {
-      if (user.subscribed || req.body.contact){
+      if ( (user.partial && user.subscribed) || req.body.contact){
         var location = new Promise(function(resolve, reject) {
           if(user.subscribed){
             axios.get('https://ipinfo.io/'+ req.body.ip +'/geo?token=c22ea3559ce1aa').then(geo => {
@@ -38,6 +39,10 @@ exports.create = (req, res) => {
         lead.save()
         .then(data => {
             Query.findOneAndUpdate({_id :req.body.formId}, {$inc : {'count' : 1}}).then(() => {
+              //send immediately if user wants every lead
+              if(user.rate == "single"){
+                Mail.sendMail(user.mailto, query.query, [lead])
+              }
               res.send(data);
             })
         }).catch(err => {

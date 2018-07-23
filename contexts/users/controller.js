@@ -106,6 +106,7 @@ exports.setSettings = (req, res) => {
     //set user.partial to false if not set
     req.body.partial = req.body.partial ? true : false
     req.body.subscribed = req.body.subscribed ? true : false
+    req.session.userSubbed = req.body.subscribed
     user.set({...req.body, ...user.rate, ...user.mailto, ...user.partial, ...user.subscribed})
     user.save(function (err, updatedUser) {
       if (err) return send("500 server error");

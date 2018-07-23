@@ -31,12 +31,12 @@ exports.single = (req, res) => {
 }
 
 const json2csv = require('json2csv').parse;
-const fields = ['submission', 'contact', 'ip'];
+const fields = ['submission', 'contact', 'location', 'createdAt'];
 const opts = { fields };
 
 exports.csv = (req, res) => {
 
-  if (!req.session.userSubed){
+  if (!req.session.userSubbed){
     req.session.flash = {"type": "error", "message": "This is a premium feature. Support form crow and get premium?"}
     return res.redirect(req.get('referer'));
   } else {

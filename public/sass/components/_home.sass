@@ -2,56 +2,71 @@
 // HOME (grid)
 ///////////////////////////
 .home
+  grid-column-start: 2
+  display: grid
+  //left column, 30px into left column, padding, right column
+  grid-template-columns: 1fr 1fr
+  margin-top: $blh
+  grid-gap: $blh
+  @media #{$media-max-sm}
+    display: block
+.card
+  grid-column-start: 1
+  grid-column-end: 2
   &__form
-  &__code
-    width: 100%
-    max-width: 500px
-    margin: $blh auto
-    display: block
-  &__try
-    margin: auto
-    display: block
+    background: white
+    grid-column-start: 1
+    padding: $blh
+  &__explanation
+    grid-column-start: 2
+    padding: $blh $blh*2
+    align-self: center
+    justify-self: center
+    transform: translate(-$blh*2 , 0)
+    @media #{$media-max-sm}
+      width: 80%
+      margin: 0 auto
+      padding: $blh*2 $blh
+      transform: translate(0 , -$blh*2)
+    &--mint
+      background: #3dc3a630
+    &--reddy
+      background: #a78a984d
+    &--white
+      background: #ffffffc9
 .code
+  grid-column-start: 1
+  width: 100%
+  max-width: 500px
+  margin: $blh auto
+  display: block
+  text-align: left
   &__header
     width: 100%
     background: #D7E7E4
     height: 20px
-    span
-      font-family: $font-title
-      font-size: $fs-base*.75
-      line-height: $fs-base*.75
-      font-family: "Courier New", Courier, monospace
-      vertical-align: text-top
-      display: inline-block
-      color: #828282
-      padding: 0 $blh
-      background: #bde2db
+  &__title
+    font-family: $font-title
+    font-size: $fs-base*.75
+    line-height: $fs-base*.75
+    font-family: "Courier New", Courier, monospace
+    vertical-align: text-top
+    display: inline-block
+    color: #828282
+    padding: 0 $blh
+    background: #bde2db
   &__button
+    width: 10px
+    height: 10px
+    border-radius: 100%
+    margin: 0 3px
+    vertical-align: text-top
+    display: inline-block
     &--red
-      width: 10px
-      height: 10px
-      border-radius: 100%
-      margin: 0 3px
-      vertical-align: text-top
-      display: inline-block
       background: #F34B16
     &--yellow
-      width: 10px
-      height: 10px
-      border-radius: 100%
-      margin: 0 3px
-      vertical-align: text-top
-      display: inline-block
-      background: #F34B16
       background: #FFE24C
     &--green
-      width: 10px
-      height: 10px
-      border-radius: 100%
-      margin: 0 3px
-      vertical-align: text-top
-      display: inline-block
-      background: #F34B16
       background: #69D02A
   &__body
     background: white

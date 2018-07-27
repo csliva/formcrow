@@ -46,8 +46,8 @@
   color: white
   text-align: center
   font-family: $font-title
-  grid-column-start: 1;
-  grid-column-end: 4;
+  grid-column-start: 1
+  grid-column-end: 4
   p
     height: 0
 
@@ -55,6 +55,8 @@ main
   display: grid
   grid-template-columns: $blh 1fr $blh
   padding-bottom: $blh * 3
+  @media #{$media-max-sm}
+    grid-template-columns: 1fr
 
 footer
   display: flex

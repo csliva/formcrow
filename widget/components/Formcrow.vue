@@ -187,6 +187,7 @@ export default {
   line-height: 18px;
   padding: 4px;
   margin: 16px 0;
+  border: 2px solid var(--prime-color);
 }
 .formcrow__error{color: red; opacity: 0.7; font-size: 12px; line-height: 12px;}
 .formcrow__next, .formcrow__submit{

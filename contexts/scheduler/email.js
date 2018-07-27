@@ -99,7 +99,7 @@ exports.sendMail = function(target_email, question, lead_list){
 
 
   var compiled = ejs.compile(fs.readFileSync(__dirname + '/html.ejs', 'utf8'));
-  var html = compiled({leads: lead_list});
+  var html = compiled({leads: lead_list, moment: moment});
 
   let mailOptions = {
       from: '"💸" <colt@bighatdigital.com>', // sender address

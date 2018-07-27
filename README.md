@@ -1,4 +1,3 @@
-#### Kyles Change
 # Form Crow
 ##### The form CRO widget as a service
 
@@ -29,28 +28,27 @@ If further CSS customization is needed, the end user can use specificity to appl
 ## Todo Widget
 
 - [x] Add SASS Compiling -- Now removed
-- [ ] Masking or auto formatting on contact form
+- [x] Masking or auto formatting on contact form
 - [x] Write form post event
-- [ ] Fix auto-submit logic
-- [ ] Theme color implementation
-- [ ] Widget needs form ID as a prop
-- [ ] Error codes
-- [ ] Determine if user color is light or dark
+- [x] Fix auto-submit logic
+- [x] Theme color implementation
+- [x] Widget needs form ID as a prop
+- [x] Error codes
+- [x] Determine if user color is light or dark
 
 
 ## Todo API
 - [ ] Zapier integrations
 - [x] Bcrypt password hashing
-- [ ] Document Controllers and Models
+- [x] Document Controllers and Models
 - [x] Create contexts instead of separate model and controller folders
 - [x] User Context
-- [ ] Add mocha test suite
 - [ ] Integrate stripe
-- [ ] Add IP address geolocation
+- [x] Add IP address geolocation
 
 
 ## Todo Frontend || Dashboard
-- [ ] Site design documents on Figma
-- [ ] Tie leads and queries together
-- [ ] Click on a query and view all submissions (kyle)
-- [ ] Creating a new query should generate embed code
+- [x] Site design documents on Figma
+- [x] Tie leads and queries together
+- [x] Click on a query and view all submissions (kyle)
+- [x] Creating a new query should generate embed code

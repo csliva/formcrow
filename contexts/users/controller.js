@@ -1,5 +1,7 @@
 const User = require('./model.js');
 const bcrypt = require('bcrypt');
+const randomBytes = require('randombytes');
+const email = require('../scheduler/email.js');
 
 //Need help??
 // https://www.callicoder.com/node-js-express-mongodb-restful-crud-api-tutorial/
@@ -8,7 +10,9 @@ const bcrypt = require('bcrypt');
 // password
 // timestamp
 
-// Create and Save a new User
+///////////////////////////
+// CREATE USER
+///////////////////////////
 exports.create = (req, res) => {
     // Validate request
     if(!req.body.email) {
@@ -46,7 +50,9 @@ exports.create = (req, res) => {
     });
 };
 
-// Authenticate password
+///////////////////////////
+// AUTHENTICATE / LOGIN
+///////////////////////////
 exports.authenticate = (req, res) => {
     User.findOne({email: req.body.email})
     .then(user => {
@@ -72,7 +78,9 @@ exports.authenticate = (req, res) => {
     });
 };
 
-// GET /logout
+///////////////////////////
+//LOGOUT
+///////////////////////////
 exports.logout = (req, res) => {
   if (req.session) {
     // delete session object
@@ -85,6 +93,10 @@ exports.logout = (req, res) => {
     });
   }
 }
+
+///////////////////////////
+// SETTINGS
+///////////////////////////
 
 // GET settings
 exports.getSettings = (req, res) => {
@@ -99,7 +111,7 @@ exports.getSettings = (req, res) => {
   }
 }
 
-// SET settings
+// POST settings
 exports.setSettings = (req, res) => {
   //ensure logged in
   User.findById(req.session.userId).then(user => {
@@ -114,4 +126,75 @@ exports.setSettings = (req, res) => {
       return res.redirect("/users/settings");
     });
   });
+}
+
+///////////////////////////
+// FORGOT
+///////////////////////////
+//GET
+exports.getForgot = (req, res) => {
+  let authed = req.session.UserId ? true : false
+  let subscribed = req.session.userSubbed ? true : false
+  return res.render('forgot', { authed: authed, subscribed: subscribed });
+}
+//POST
+exports.postForgot = (req, res) => {
+  try {
+    User.findOne({email: req.body.email}).then(user => {
+      if (user === null || user === undefined || user.length == 0) {
+        //handle email not exisitng
+        req.session.flash = {"type": "error", "message": "Woops, did you input the right email?"}
+        return res.redirect("/users/forgot");
+      } else {
+        //success
+        //generate token
+        user.resetPasswordToken = randomBytes(20).toString('hex');;//get 16 random bytes
+        //get date
+        user.resetPasswordExpires = Date.now() + 3600000; // 1 hour
+        //store new entries
+        user.save().then(data => {
+          let url = "formcrow.com/users/recover?token=" + data.resetPasswordToken
+          email.sendRecovery(req.body.email, url);
+          req.session.flash = {"type": "success", "message": "Check your email to reset your password"}
+          return res.redirect("/users/forgot");
+        })
+        //email special recovery URL
+        //create pages to handle URL -- either show expired or show form to confirm new password
+      }
+    })
+  }
+  catch(err){
+    req.session.flash = {"type": "error", "message": "Failed email lookup"}
+    return res.redirect("/users/forgot");
+  }
+}
+
+
+///////////////////////////
+// RECOVERY
+///////////////////////////
+//GET
+exports.getRecover = (req, res) => {
+    User.findOne({resetPasswordToken: req.query.token}).then(user => {
+      let authed = req.session.UserId ? true : false
+      let subscribed = req.session.userSubbed ? true : false
+      let expired = (Date.now() > user.resetPasswordExpires) ? true : false
+      return res.render('recover', { authed: authed, subscribed: subscribed, expired: expired, user: user._id });
+
+    })
+}
+//POST
+exports.postRecover = (req, res) => {
+  User.findById(req.query.id).then(user => {
+    user.password = bcrypt.hashSync(req.body.password, 10)
+    user.save(function (err, updatedUser) {
+      if (err){
+        req.session.flash = {"type": "error", "message": "Failed to updated user account"}
+        return res.redirect('/')
+      } else {
+        req.session.flash = {"type": "success", "message": "Password Updated!"}
+        return res.redirect('/')
+      }
+    });
+  })
 }

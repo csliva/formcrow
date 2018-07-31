@@ -7,7 +7,8 @@ const UserSchema = mongoose.Schema({
     rate: String,
     mailto: String,
     partial: Boolean,
-
+    resetPasswordToken: String,
+    resetPasswordExpires: Date
 }, {
     timestamps: true
 });

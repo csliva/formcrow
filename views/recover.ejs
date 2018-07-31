@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <% include partials/head %>
+  </head>
+  <body class="app">
+    <header>
+      <% include partials/header %>
+    </header>
+
+    <main>
+      <% if(!expired) { %>
+        <div class="form">
+          <div class="user-form">
+            <form action="/users/recover?id=<%= user %>" method="POST">
+              <label for="password">New Password</label>
+              <input type="text" name="password" required/>
+              <button type="submit">Save New Password</button>
+            </form>
+          </div>
+        </div>
+      <% } else { %>
+      <h3>Reset URL expired</h3>
+      <a href="/users/forgot">Reset Password</a>
+      <% } %>
+    </main>
+
+    <footer>
+      <% include partials/footer %>
+    </footer>
+
+  </body>

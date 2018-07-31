@@ -278,7 +278,8 @@ header {
       background: #000000;
       font-size: 24px;
       padding: 24px;
-      border: none; }
+      border: none;
+      text-decoration: none; }
     .home .cta__or {
       grid-column: 2;
       align-self: baseline;

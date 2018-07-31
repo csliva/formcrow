@@ -36,14 +36,35 @@ router.get('/logout', function(req, res, next) {
   controller.logout(req, res)
 });
 
-/* Settings page -- Get and Set */
+/* Settings page -- Get and post */
 router.get('/settings', function(req, res, next){
   controller.getSettings(req, res)
 });
 
-/* Settings page -- Get and Set */
+/* Settings page -- Get and post */
 router.post('/settings', function(req, res, next){
   controller.setSettings(req, res)
+});
+
+
+/* GET Forgot password page  */
+router.get('/forgot', function(req, res, next){
+  controller.getForgot(req, res)
+});
+
+/* POST Settings page */
+router.post('/forgot', function(req, res, next){
+  controller.postForgot(req, res)
+});
+
+/* GET Forgot password page  */
+router.get('/recover', function(req, res, next){
+  controller.getRecover(req, res)
+});
+
+/* POST Settings page */
+router.post('/recover', function(req, res, next){
+  controller.postRecover(req, res)
 });
 
 module.exports = router;

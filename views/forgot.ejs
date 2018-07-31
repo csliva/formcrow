@@ -11,15 +11,11 @@
     <main>
       <div class="form">
         <div class="user-form">
-          <h2>Sign up</h2>
-          <form action="/users/signup" method="POST">
+          <h2>Forgot Password</h2>
+          <form action="/users/forgot" method="POST">
             <label for="email">Email</label>
-            <input type="text" placeholder="user@mail.com" name="email" />
-
-            <label for="password">Password</label>
-            <input type="password" name="password" />
-
-            <button type="submit">Sign me up</button>
+            <input type="text" placeholder="user@mail.com" name="email" required/>
+            <button type="submit">Email Recovery Link</button>
           </form>
         </div>
       </div>

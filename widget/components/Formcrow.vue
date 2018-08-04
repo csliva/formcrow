@@ -63,8 +63,8 @@ export default {
         // Error :(
         console.log(err)
       });
-      //If form has been started without submission, submit before closing the page
-      window.onbeforeunload = function() {
+
+      window.addEventListener('beforeunload', function(event) {
         if(that.query_input && that.view_state != 3 && that.honey == false){
           fetch('http://localhost:3000/lead', {
             method: 'post',
@@ -76,7 +76,7 @@ export default {
           });
         }
         return;
-      }
+      });
   },
   watch: {
     contact_input: function(){

@@ -52,24 +52,32 @@
     height: 0
 
 main
+  padding-bottom: $blh * 3
+  @media #{$media-min-sm}
   display: grid
   grid-template-columns: $blh 1fr $blh
-  padding-bottom: $blh * 3
   @media #{$media-max-sm}
-    grid-template-columns: 1fr
+    display: block
 
 footer
-  display: flex
-  position: absolute
-  bottom: 0
-  height: $blh * 2
-  justify-content: center
-  align-content: center
-  align-items: center
-  width: 100%
   background: #ffffff69
+  @media #{$media-max-sm}
+    padding: $blh/2 $blh
+    text-align: center
+    span
+      display: block
+  @media #{$media-min-sm}
+    display: flex
+    position: absolute
+    bottom: 0
+    height: $blh * 2
+    justify-content: center
+    align-content: center
+    align-items: center
+    width: 100%
   span
     padding: 0 $blh
+
 
 code
   +selecttext()

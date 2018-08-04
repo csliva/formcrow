@@ -2,13 +2,14 @@
 // HOME (grid)
 ///////////////////////////
 .home
-  grid-column-start: 2
-  display: grid
-  //left column, 30px into left column, padding, right column
-  grid-template-columns: 1fr 1fr
-  margin-top: $blh
-  grid-column-gap: $blh
-  grid-row-gap: $blh*3
+  @media #{$media-min-sm}
+    margin-top: $blh
+    grid-column-start: 2
+    display: grid
+    //left column, 30px into left column, padding, right column
+    grid-template-columns: 1fr 1fr
+    grid-column-gap: $blh
+    grid-row-gap: $blh*3
   @media #{$media-max-sm}
     display: block
   h2

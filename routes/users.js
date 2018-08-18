@@ -67,4 +67,15 @@ router.post('/recover', function(req, res, next){
   controller.postRecover(req, res)
 });
 
+/* GET Forgot password page  */
+router.get('/upgrade', function(req, res, next){
+  controller.getUpgrade(req, res)
+});
+
+/* POST Settings page */
+router.post('/upgrade', function(req, res, next){
+  controller.postUpgrade(req, res)
+});
+
+
 module.exports = router;

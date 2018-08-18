@@ -2,6 +2,7 @@ const User = require('./model.js');
 const bcrypt = require('bcrypt');
 const randomBytes = require('randombytes');
 const email = require('../scheduler/email.js');
+const stripe = require('stripe')('pk_test_JfZU8rUoDEdZhGC6KxMONCQf');
 
 //Need help??
 // https://www.callicoder.com/node-js-express-mongodb-restful-crud-api-tutorial/
@@ -133,7 +134,7 @@ exports.setSettings = (req, res) => {
 ///////////////////////////
 //GET
 exports.getForgot = (req, res) => {
-  let authed = req.session.UserId ? true : false
+  let authed = req.session.userId ? true : false
   let subscribed = req.session.userSubbed ? true : false
   return res.render('forgot', { authed: authed, subscribed: subscribed });
 }
@@ -176,7 +177,7 @@ exports.postForgot = (req, res) => {
 //GET
 exports.getRecover = (req, res) => {
     User.findOne({resetPasswordToken: req.query.token}).then(user => {
-      let authed = req.session.UserId ? true : false
+      let authed = req.session.userId ? true : false
       let subscribed = req.session.userSubbed ? true : false
       let expired = (Date.now() > user.resetPasswordExpires) ? true : false
       return res.render('recover', { authed: authed, subscribed: subscribed, expired: expired, user: user._id });
@@ -196,5 +197,21 @@ exports.postRecover = (req, res) => {
         return res.redirect('/')
       }
     });
+  })
+}
+
+exports.getUpgrade = (req, res) => {
+  let authed = req.session.userId ? true : false
+  let subscribed = req.session.userSubbed ? true : false
+  if (!authed){ return res.redirect("/") }
+  if (subscribed) {return res.redirect("/dashboard")}
+  return res.render('upgrade', { authed: authed, subscribed: subscribed });
+}
+
+exports.postUpgrade = (req, res) => {
+  //get the user
+  User.findById(req.query.id).then(user => {
+    console.log(user.customerObject)
+    res.send(req.body.stripeToken)
   })
 }
